@@ -76,7 +76,7 @@ function ChatBot() {
         { type: 'bot', text: botMessage }
       ]);
 
-      setIsTyping(false);
+      setIsTyping(true);
     };
 
     websocket.onerror = (error) => {

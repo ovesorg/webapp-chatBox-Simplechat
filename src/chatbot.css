@@ -1,9 +1,9 @@
 /* ChatBot.css */
-.chatbot-container {
+/* .chatbot-container {
     width: 300px;
     border: 1px solid #ccc;
     padding: 10px;
-}
+} */
 
 .messages-container {
     max-height: 400px;
@@ -84,13 +84,13 @@ input {
     width: 300px;
     position: fixed;
     /* Fix the position */
-    bottom: 10px;
+    bottom: 20px;
     /* Position at bottom */
-    right: 10px;
+    right: 20px;
     /* Position to the right */
     border: 2px solid #34a2db;
     /* Updated border color */
-    padding: 10px;
+    padding: 30px;
     border-radius: 20px;
     /* Add some roundness */
     background-color: #1a1a2e;
