@@ -8,23 +8,43 @@
 .messages-container {
     max-height: 400px;
     overflow-y: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .message {
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    color: #f5f5f5;
+        /* Light text color */
+    max-width: 100%;
+       /* Limit the width */
+    display: inline-block;
+        /* Ensure the message container only takes up as much space as it needs*/
 }
 
 .message.user {
     background-color: #e4dddd;
     text-align: right;
+    /*text-align: left;*/
+        /* Adjusted this to left for user */
+    margin-left: auto;
+        /* This pushes the user's messages to the right side */
+    border-bottom-right-radius: 0;
+        /* Makes the message bubble look like it's from the user */
+
 }
 
 .message.bot {
-    background-color: #f321c9;
+    background-color: #e654c9;
     color: white;
+    text-align: left;
+    margin-right: auto;
+        /* This pushes the user's messages to the right side */
+    border-bottom-right-radius: 10;
+        /* Makes the message bubble look like it's from the user */
+
+
 }
 
 .input-container {
@@ -81,19 +101,19 @@ input {
 
 
 .chatbot-container {
-    width: 300px;
+    width: 400px;
     position: fixed;
     /* Fix the position */
-    bottom: 20px;
+    bottom: 30px;
     /* Position at bottom */
-    right: 20px;
+    right: 40px;
     /* Position to the right */
-    border: 2px solid #34a2db;
+    border: 2px solid #3d89b0;
     /* Updated border color */
-    padding: 30px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 30px;
     /* Add some roundness */
-    background-color: #1a1a2e;
+    background-color: #1f1f5d;
     /* Dark background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Shadow for depth */
@@ -103,6 +123,7 @@ input {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 30px;
+    width: 100px;
 }
 
 .message {
@@ -121,12 +142,15 @@ input {
     text-align: right;
     margin-bottom: 20px;/* Add spacing at the bottom of the user message */
     /*max-width: 70%; /* Limit the width to 70% of the parent container; adjust as needed */
+
+
 }
 .message.bot {
     background-color: #5134a6;
     /* Tech blue for bot */
     margin-top: 25px;
         /* Add spacing at the top of the bot message */
+
 }
 
 .input-container {

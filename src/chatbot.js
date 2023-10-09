@@ -81,11 +81,11 @@ function ChatBot() {
             setIsTyping(true);
         };
 
-        websocket.onerror = (error) => {
-            console.error(`WebSocket Error: ${error}`);
+        websocket.onerror = (event) => {
+            console.error("WebSocket Error:", event);
         };
 
-        websocket.onclose = () => {
+        websocket.onclose = ()) => {
             console.log("WebSocket connection closed");
         };
 
@@ -101,6 +101,8 @@ function ChatBot() {
             ...prevMessages,
             { type: 'user', text: input.trim() }
         ]);
+        // console.log(ws);
+        // console.log(input)
 
         if (ws) {
             ws.send(input.trim()); // Send user's input to the backend
