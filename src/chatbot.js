@@ -85,7 +85,7 @@ function ChatBot() {
             console.error("WebSocket Error:", event);
         };
 
-        websocket.onclose = ()) => {
+        websocket.onclose = () => {
             console.log("WebSocket connection closed");
         };
 
