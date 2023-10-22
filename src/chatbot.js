@@ -55,6 +55,9 @@
 
 import React, { useState, useEffect } from 'react';
 import './chatbot.css';
+//import logo from '.';
+
+
 
 function ChatBot() {
     const [messages, setMessages] = useState([]);
