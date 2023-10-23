@@ -150,9 +150,14 @@
 
 
 // MOCKSERVER CODE FOR SOME SMALL RESPONSE
+
 import React, { useState, useEffect, useRef } from 'react';
 import './chatbot.css';
 //import logo from '.';
+import './chatbot.js';
+import AuthPage from './AuthPage';
+
+
 
 function ChatBot() {
     const [topic, setTopic] = useState('OvesSmart chat'); // You can default it to any topic you like
@@ -292,4 +297,3 @@ function ChatBot() {
 }
 
 export default ChatBot;
-
