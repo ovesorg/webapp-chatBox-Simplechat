@@ -1,54 +1,94 @@
-/* ChatBot.css */
-/* .chatbot-container {
-    width: 300px;
-    border: 1px solid #ccc;
-    padding: 10px;
-} */
+ChatBot.css
+.chatbot-container {
+    width: 400px;
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    border: 2px solid #3d89b0;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #1f1f5d;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+*/
 
 .messages-container {
     max-height: 400px;
     overflow-y: auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.chatbot-header {
+    background-color: #3d89b0;
+    /* You can choose any color you like */
+    color: white;
+    padding: 10px;
+    border-radius: 25px 25px 0 0;
+    /* Rounded corners at the top */
+    text-align: center;
+    font-weight: bold;
 }
 
 .message {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
     color: #f5f5f5;
-        /* Light text color */
-    max-width: 100%;
-       /* Limit the width */
     display: inline-block;
-        /* Ensure the message container only takes up as much space as it needs*/
+    /* This will make it adapt its size to its content */
+    max-width: 70%;
+        /* Ensures the message doesn't fill the entire container */
+    /* padding: 10px;
+    margin: 5px 0;
+    border-radius: 15px;
+    color: #f5f5f5;
+    width: 70%;
+    display: block;
+    margin: 10px 0; */
+        /* Increase vertical margin for spacing between messages */
 }
 
 .message.user {
     background-color: #e4dddd;
-    text-align: right;
-    /*text-align: left;*/
-        /* Adjusted this to left for user */
-    margin-left: auto;
-        /* This pushes the user's messages to the right side */
+    float: right;
+    clear: both;
     border-bottom-right-radius: 0;
-        /* Makes the message bubble look like it's from the user */
-
+    /* User's image icon */
+    background-image: url('../user.png');
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 95% 5px;
+    padding-right: 50px;
+    /* Adjust based on your icon's width */
+    float: right;
+        /* Align user messages to the right */
+    clear: both;
+        /* Clear floats */
 }
 
 .message.bot {
     background-color: #e654c9;
-    color: white;
-    text-align: left;
-    margin-right: auto;
-        /* This pushes the user's messages to the right side */
-    border-bottom-right-radius: 10;
-        /* Makes the message bubble look like it's from the user */
-
-
+    float: left;
+    clear: both;
+    border-bottom-left-radius: 0;
+    /* Bot's image icon */
+    background-image: url('../chatbot.webp');
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 5px 5px;
+    padding-left: 50px;
+    /* Adjust based on your icon's width */
+    float: left;
+        /* Align bot messages to the left */
+    clear: both;
+        /* Clear floats */
 }
 
 .input-container {
     display: flex;
+    clear: both;
+    /* Important: Clear the float */
 }
 
 input {
@@ -123,7 +163,7 @@ input {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 30px;
-    width: 100px;
+    /* width: 100px; */
 }
 
 .message {
@@ -198,4 +238,92 @@ button:hover {
     /* Darken button on hover */
 }
 
+
 /* Rest of the styles remain the same */
+
+/* ChatBot.css */
+.chatbot-container {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.messages-container {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    overflow-y: auto;
+    max-height: 400px;
+        /* Adjust this value based on your desired height */
+}
+
+.message {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.message.user {
+    background-color: #9d398b;
+    text-align: right;
+}
+
+.message.bot {
+    background-color: #f321c9;
+    color: rgb(244, 242, 242);
+}
+
+.input-container {
+    display: flex;
+}
+
+input {
+    flex-grow: 1;
+    padding: 5px;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background: #f321ad;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
