@@ -8,10 +8,14 @@
     background-size: 200% 200%;
     animation: gradientShift 10s infinite alternate;
 
+    background-image: url('/Users/leonlishenga/Downloads/Techphoto background .jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .auth-form {
-    background-color: #6951c8;
+    background-color: #255787;
     padding: 60px 70px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -54,7 +58,7 @@
 }
 
 .auth-form button:hover {
-    background-color: #4f39a1;
+    background-color: #8f85b4;
 }
 
 .error-message {
