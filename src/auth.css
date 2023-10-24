@@ -6,8 +6,7 @@
     background-color: #d3dfe2;
     background: linear-gradient(120deg, #d3dfe2, #9087b1);
     background-size: 200% 200%;
-    animation: gradientShift 10s infinite alternate;
-
+    /*animation: gradientShift 10s infinite alternate;*/
     background-image: url('/Users/leonlishenga/Downloads/Techphoto background .jpeg');
     background-size: cover;
     background-repeat: no-repeat;
