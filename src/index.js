@@ -1,34 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
 import ChatBot from './chatbot'
 import reportWebVitals from './reportWebVitals';
+import AuthPage from './AuthPage';
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  if (!isAuthenticated) {
+    return <AuthPage onAuthenticated={setIsAuthenticated} />;
+  }
+
+  return <ChatBot />;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-// const express = require('express');
-// const app = express();
-// const http = require('http');
-// const server = http.createServer(app);
-// const { Server } = require("socket.io");
-// const io = new Server(server);
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
-
-// io.on('connection', (socket) => {
-//   socket.on('chat message', (msg) => {
-//     console.log('message: ' + msg);
-//   });
-// });
-
-// server.listen(3000, () => {
-//   console.log('listening on *:3000');
-// });
 root.render(
   <React.StrictMode>
-    <ChatBot />
+    <App />
   </React.StrictMode>
 );
 
