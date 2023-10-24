@@ -27,7 +27,7 @@ function ChatBot() {
             "who are you": "I'm a mock chatbot providing temporary answers.",
             "tell me about solar panels": "Solar panels are devices that convert light into electricity. They are used to power a wide variety of applications, from small electronics to homes and businesses.",
             "what are fishing lights": "Fishing lights are specialized lights used to attract fish. They can be submerged in the water or float on the surface, and they can be particularly useful for night fishing.",
-            "what is omnivoltaic": "Omnivoltaic is a company specializing in energy solutions, providing reliable and affordable power products for people without access to grid power.",
+            "Tell me more about Omnivoltaic": "Omnivoltaic is a company specializing in energy solutions, providing reliable and affordable power products for people without access to grid power.",
             "what services does omnivoltaic offer": "Omnivoltaic offers a range of energy solutions including solar home systems, fishing lights, and other solar-powered products to cater to off-grid power needs.",
             "tell me about energy solutions": "Energy solutions refer to a range of services and products designed to provide, conserve, or manage energy. This can include renewable energy systems, energy storage solutions, energy efficiency measures, and more.",
             "default": "I'm not sure about that. Could you please rephrase or ask something else?"
