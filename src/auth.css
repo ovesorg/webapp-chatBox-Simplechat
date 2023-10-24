@@ -6,7 +6,8 @@
     background-color: #d3dfe2;
     background: linear-gradient(120deg, #d3dfe2, #9087b1);
     background-size: 200% 200%;
-    /*animation: gradientShift 10s infinite alternate;*/
+    animation: gradientShift 10s infinite alternate;
+
     background-image: url('/Users/leonlishenga/Downloads/Techphoto background .jpeg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,13 +15,14 @@
 }
 
 .auth-form {
-    background-color: #255787;
+    background-color: #422b9e;
     padding: 60px 70px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 500px;
     border: 1px solid rgba(105, 81, 200, 0.3);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 30px rgba(105, 81, 200, 0.6);
+    background-color: rgba(105, 81, 200, 0.85);
 
 }
 
@@ -37,6 +39,7 @@
     outline: none;
     border-color: #d05ec2;
     box-shadow: 0 0 10px #d05ec2;
+
 }
 
 .auth-form button {
