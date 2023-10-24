@@ -18,7 +18,7 @@ function Auth({ onAuthenticated }) {
     return (
         <div className="auth-container">
             <div className="auth-form">
-                <h1>Sparks Energy Solutions</h1> {/* Moved this line here */}
+                <h1>Omnivoltaic Energy Solutions</h1> {/* Moved this line here */}
                 {error && <div className="error-message">{error}</div>}
                 <input
                     type="email"
