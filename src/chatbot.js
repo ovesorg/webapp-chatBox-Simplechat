@@ -155,12 +155,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import './chatbot.css';
 //import logo from '.';
 import './chatbot.js';
-import AuthPage from './AuthPage';
+//import AuthPage from './AuthPage';
 
 
 
 function ChatBot() {
-    const [topic, setTopic] = useState('OvesSmart chat'); // You can default it to any topic you like
+    const topic = useState('OvesSmart chat')[0]; // You can default it to any topic you like
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
