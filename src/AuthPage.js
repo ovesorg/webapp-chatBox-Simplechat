@@ -1,54 +1,41 @@
-// import React, { useState } from 'react';
+// Auth.js
+import React, { useState } from 'react';
+import './auth.css';
 
-// function AuthPage({ onLogin }) {
-//     const [username, setUsername] = useState('');
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const [errorMsg, setErrorMsg] = useState('');
+function Auth({ onAuthenticated }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-//     const handleLogin = () => {
-//         // You can add real authentication logic here, for now, I'll assume if all fields are filled, login is successful
-//         if (username && email && password) {
-//             onLogin();
-//         } else {
-//             setErrorMsg("Please fill in all fields.");
-//         }
-//     };
+    const handleLogin = () => {
+        if (email === "admin@example.com" && password === "password123") {
+            onAuthenticated(true);
+        } else {
+            setError("Invalid credentials!");
+        }
+    };
 
-//     return (
-//         <div className="auth-container">
-//             <h2>Login</h2>
-//             {errorMsg && <p className="error">{errorMsg}</p>}
-//             <div>
-//                 <input
-//                     type="text"
-//                     placeholder="Username"
-//                     value={username}
-//                     onChange={e => setUsername(e.target.value)}
-//                 />
-//             </div>
-//             <div>
-//                 <input
-//                     type="email"
-//                     placeholder="Email"
-//                     value={email}
-//                     onChange={e => setEmail(e.target.value)}
-//                 />
-//             </div>
-//             <div>
-//                 <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={e => setPassword(e.target.value)}
-//                 />
-//             </div>
-//             <button onClick={handleLogin}>Login</button>
-//         </div>
-//     );
-// }
+    return (
+        <div className="auth-container">
+            <div className="auth-form">
+                <h1>Omnivoltaic Energy Solutions</h1> {/* Moved this line here */}
+                {error && <div className="error-message">{error}</div>}
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <button onClick={handleLogin}>Login</button>
+            </div>
+        </div>
+    );
+}
 
-// export default AuthPage;
-
-       // NEW CODE
-
+export default Auth;
