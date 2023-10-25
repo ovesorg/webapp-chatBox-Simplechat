@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 //import App from './App';
-import ChatBot from './chatbot'
+import ChatBot from './chatBot'
 import reportWebVitals from './reportWebVitals';
 import AuthPage from './AuthPage';
 

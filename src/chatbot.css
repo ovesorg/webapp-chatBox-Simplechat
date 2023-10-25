@@ -131,12 +131,13 @@ input {
 
 
 .chatbot-container {
-    width: 400px;
+    width: 1000px;
+    /*height: 900;*/
     position: fixed;
     /* Fix the position */
-    bottom: 30px;
+    bottom: 120px;
     /* Position at bottom */
-    right: 40px;
+    right: 60px;
     /* Position to the right */
     border: 2px solid #d9dcdd;
     /* Updated border color */
@@ -147,6 +148,7 @@ input {
     /* Dark background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Shadow for depth */
+
 }
 
 .message.bot {
@@ -270,13 +272,17 @@ input {
 }
 
 .typing-indicator span {
-    display: inline-block;
+    /*display: inline-block;*/
     width: 8px;
     height: 8px;
     margin: 0 2px;
     background: #f321ad;
     border-radius: 50%;
     animation: bounce 1.2s infinite;
+    float: right;
+    /*clear: both;*/
+            /* Other existing styles remain the same */
+
 }
 
 .typing-indicator span:nth-child(2) {
@@ -287,6 +293,11 @@ input {
     animation-delay: 0.4s;
 }
 
+.typing-indicator.active {
+    display: flex;
+    /* This overrides the "display: none" from above */
+}
+
 .body {
     background-color:#cad8da;
     /* Replace with your desired color. */
@@ -294,7 +305,7 @@ input {
     font-family: 'Arial', sans-serif;
     /* Just an example. Use your desired font. */
 
-    background-image: url('/Users/leonlishenga/Downloads/techphoto2 backgroung.jpeg');
+    background-image: url('/Users/leonlishenga/Downloads/Techphoto background .jpeg');
     background-size: cover;
     /* this will cover the entire viewport */
     background-repeat: no-repeat;
