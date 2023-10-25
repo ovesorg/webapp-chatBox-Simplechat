@@ -148,6 +148,12 @@ input {
     /* Dark background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Shadow for depth */
+    background-image: url('/Users/leonlishenga/Downloads/techphoto2 backgroung.jpeg');
+    background-size: cover;
+        /* This will ensure that the image covers the full container */
+    background-repeat: no-repeat;
+        /* Ensures the image doesn't repeat */
+    background-position: center center;
 
 }
 
@@ -304,15 +310,15 @@ input {
     margin: 0;
     font-family: 'Arial', sans-serif;
     /* Just an example. Use your desired font. */
-
-    background-image: url('/Users/leonlishenga/Downloads/Techphoto background .jpeg');
+    background-image: url('/Users/leonlishenga/Downloads/techphoto2 backgroung.jpeg');
     background-size: cover;
-    /* this will cover the entire viewport */
+    /* This will ensure that the image covers the full container */
     background-repeat: no-repeat;
-    /* prevents the image from repeating */
+    /* Ensures the image doesn't repeat */
     background-position: center center;
+
     /* centers the image */
-    background-color: #cad8da;
+    /*background-color: #cad8da*/;
     /* This will be shown if the image isn't loaded */
     margin: 0;
     font-family: 'Arial', sans-serif;
