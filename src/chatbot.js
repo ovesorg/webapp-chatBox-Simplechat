@@ -129,7 +129,7 @@
 
 
 
-//SECOND CODE WITH SOCKET.IO
+// CODE WITH SOCKET.IO
 
 import React, { useState, useEffect, useRef } from 'react';
 import './chatBot.js';

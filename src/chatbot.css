@@ -148,7 +148,7 @@ input {
     /* Dark background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Shadow for depth */
-    background-image: url('/Users/leonlishenga/Downloads/techphoto2 backgroung.jpeg');
+    background-image: url('/src/imagess/techphoto2 backgroung.jpeg');
     background-size: cover;
         /* This will ensure that the image covers the full container */
     background-repeat: no-repeat;
@@ -310,7 +310,7 @@ input {
     margin: 0;
     font-family: 'Arial', sans-serif;
     /* Just an example. Use your desired font. */
-    background-image: url('/Users/leonlishenga/Downloads/techphoto2 backgroung.jpeg');
+    background-image: url('/src/imagess/techphoto2 backgroung.jpeg');
     background-size: cover;
     /* This will ensure that the image covers the full container */
     background-repeat: no-repeat;
