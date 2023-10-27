@@ -10,7 +10,7 @@ ChatBot.css
 
 
 .chatbot-header {
-    background-color: #ca3cba;
+    background-color: #2074d5;
     /* You can choose any color you like */
     color: white;
     padding: 10px;
@@ -56,7 +56,7 @@ ChatBot.css
 }
 
 .message.bot {
-    background-color: #e654c9;
+    background-color: #6b95e8;
     float: left;
     clear: both;
     border-bottom-left-radius: 0;
@@ -135,7 +135,7 @@ input {
     /*height: 900;*/
     position: fixed;
     /* Fix the position */
-    bottom: 120px;
+    bottom: 80px;
     /* Position at bottom */
     right: 60px;
     /* Position to the right */
@@ -282,7 +282,7 @@ input {
     width: 8px;
     height: 8px;
     margin: 0 2px;
-    background: #f321ad;
+    background: #c27aaa;
     border-radius: 50%;
     animation: bounce 1.2s infinite;
     float: right;

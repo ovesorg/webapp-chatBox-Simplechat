@@ -129,15 +129,12 @@
 
 
 
-// CODE WITH SOCKET.IO
+//SECOND CODE WITH SOCKET.IO
 
 import React, { useState, useEffect, useRef } from 'react';
-import './chatBot.js';
+import './ChatBot.js';
 import './chatbot.css';
 //import logo from '.';
-
-
-
 function ChatBot() {
     const topic = useState('OvesSmart chat')[0]; // You can default it to any topic you like
     const [messages, setMessages] = useState([]);
@@ -145,12 +142,9 @@ function ChatBot() {
     const [isTyping, setIsTyping] = useState(false);
     const [ws, setWs] = useState(null);
     const messagesEndRef = useRef(null);
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-
-
+    // const scrollToBottom = () => {
+    //     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // };
     useEffect(() => {
         const websocket = new WebSocket('wss://dev-chatbot.omnivoltaic.com/ws');
         setWs(websocket);
@@ -175,16 +169,11 @@ function ChatBot() {
             websocket.close();
         };
     }, []);
-
-
-
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             handleSubmit();
         }
     };
-
-
     const handleSubmit = () => {
         if (input.trim() === '') return;
         setMessages((prevMessages) => [
@@ -197,14 +186,12 @@ function ChatBot() {
             ws.send(input.trim()); // Send user's input to the backend
             setIsTyping(true);
             setInput('');  // Clear input field
-
             setTimeout(() => {
                 setIsTyping(false);
             }, 1000);
         }
     };
     return (
-
         <div className="chatbot-container">
             <div className="chatbot-header"> {/* Add this block for the header */}
                 Topic: {topic}
@@ -221,16 +208,12 @@ function ChatBot() {
                         <span></span>
                         <span></span>
                     </div>
-
                     // When sending a message or waiting for a response
                     //document.querySelector('.typing-indicator').classList.add('active');
-
                     // Once the response is received and displayed
                     //document.querySelector('.typing-indicator').classList.remove('active');
-
                 )}
             </div>
-
             <div className="input-container">
                 <input
                     value={input}
