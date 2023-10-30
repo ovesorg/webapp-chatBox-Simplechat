@@ -1,5 +1,3 @@
-// CODE WITH SOCKET.IO
-
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatBot.js';
 import './chatbot.css';
@@ -100,7 +98,3 @@ function ChatBot() {
     );
 }
 export default ChatBot;
-
-
-
-
