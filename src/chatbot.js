@@ -9,9 +9,9 @@ function ChatBot() {
     const [isTyping, setIsTyping] = useState(false);
     const [ws, setWs] = useState(null);
     const messagesEndRef = useRef(null);
-    // const scrollToBottom = () => {
-    //     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    // };
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
     useEffect(() => {
         const websocket = new WebSocket('wss://dev-chatbot.omnivoltaic.com/ws');
         setWs(websocket);
@@ -36,6 +36,11 @@ function ChatBot() {
             websocket.close();
         };
     }, []);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
             handleSubmit();
@@ -80,6 +85,7 @@ function ChatBot() {
                     // Once the response is received and displayed
                     //document.querySelector('.typing-indicator').classList.remove('active');
                 )}
+                <div ref={messagesEndRef} />
             </div>
             <div className="input-container">
                 <input
@@ -89,7 +95,7 @@ function ChatBot() {
                     placeholder="Ask me anything..." />
                 <button onClick={handleSubmit}>Submit</button>
             </div>
-            <div ref={messagesEndRef} />
+
             {/* <div className="input-container">
                  <input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask me anything..." />
                  <button onClick={handleSubmit}>Submit</button>

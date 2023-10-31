@@ -1,6 +1,4 @@
-ChatBot.css
-
-.messages-container {
+ChatBot.css .messages-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
@@ -29,32 +27,37 @@ ChatBot.css
     display: inline-block;
     /* This will make it adapt its size to its content */
     max-width: 70%;
-        /* Ensures the message doesn't fill the entire container */
-        /* Increase vertical margin for spacing between messages */
+    /* Ensures the message doesn't fill the entire container */
+    /* Increase vertical margin for spacing between messages */
 }
 
 
 .message.user {
-    background-color:#4075b1;
-    float: right;
-    clear: both;
-    border-bottom-right-radius: 0;/* User's image icon */
+    background-color: #4075b1;
+    /* float: right;
+    clear: both; */
+    border-bottom-right-radius: 0;
+    /* User's image icon */
     background-image: url('../user.png');
     background-repeat: no-repeat;
     background-size: 40px;
     background-position: 95% 5px;
-    padding-right: 50px;/* Adjust based on your icon's width */
-    float: right;/* Align user messages to the right */
-    clear: both; /* Clear floats */
-    margin-bottom: 20px;
+    padding-right: 50px;
+    /* Adjust based on your icon's width */
+    float: right;
+    /* Align user messages to the right */
+    /*clear: both;*/
+    /* Clear floats */
+    /*margin-bottom: 20px;*/
 }
+
 /* .message.user {
     background-color: #d73ac2;
     /* Slightly different shade for the user */
-    /*text-align: right;*/
-    /*margin-bottom: 20px;*/
-    /* Add spacing at the bottom of the user message */
-    /*max-width: 70%; /* Limit the width to 70% of the parent container; adjust as needed */
+/*text-align: right;*/
+/*margin-bottom: 20px;*/
+/* Add spacing at the bottom of the user message */
+/*max-width: 70%; /* Limit the width to 70% of the parent container; adjust as needed */
 
 
 .message.bot {
@@ -65,9 +68,12 @@ ChatBot.css
     background-repeat: no-repeat;
     background-size: 40px;
     background-position: 5px 5px;
-    padding-left: 40px;/* Adjust based on your icon's width */
-    float: left;/* Align bot messages to the left */
-    clear: both; /* Clear floats */
+    padding-left: 40px;
+    /* Adjust based on your icon's width */
+    float: left;
+    /* Align bot messages to the left */
+    clear: both;
+    /* Clear floats */
     background-color: #e0dddf;
     color: rgb(0, 0, 0);
 
@@ -151,7 +157,7 @@ ChatBot.css
     /* background-size: cover;
         /* This will ensure that the image covers the full container */
     /* background-repeat: no-repeat; */
-        /* Ensures the image doesn't repeat */
+    /* Ensures the image doesn't repeat */
     /* background-position: center center; */
 
 }
@@ -170,7 +176,7 @@ input {
     border-radius: 3px;
     border: none;
     /* Remove default border */
-    background-color:4#2f2f89;
+    background-color: 4#2f2f89;
     /* Slightly different shade for input */
     color: #000000;
     /* Light text color */
@@ -187,7 +193,7 @@ button {
     margin-left: 10px;
     border: none;
     border-radius: 5px;
-    background-color:#4075b1;
+    background-color: #4075b1;
     /* Tech blue for button */
     color: #080000;
     /* Light text color */
@@ -201,13 +207,14 @@ button:hover {
     background-color: #a0d2ea;
     /* Darken button on hover */
 }
+
 .messages-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
     overflow-y: auto;
     max-height: 400px;
-        /* Adjust this value based on your desired height */
+    /* Adjust this value based on your desired height */
 }
 
 
@@ -216,10 +223,10 @@ button:hover {
     display: flex;
 }
 
-/*input {
+/* input {
     flex-grow: 1;
     padding: 5px;
-}*/
+} */
 
 @keyframes bounce {
 
@@ -259,7 +266,7 @@ button:hover {
     animation: bounce 0.8s infinite;
     float: right;
     /*clear: both;*/
-            /* Other existing styles remain the same */
+    /* Other existing styles remain the same */
 
 }
 
@@ -277,7 +284,7 @@ button:hover {
 }
 
 .body {
-    background-color:#dddddd48;
+    background-color: #dddddd48;
     /* Replace with your desired color. */
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -292,6 +299,3 @@ button:hover {
 
 
 /* ... Existing styles ... */
-
-
-
