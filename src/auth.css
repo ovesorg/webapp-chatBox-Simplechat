@@ -14,7 +14,7 @@
 }
 
 .auth-form {
-    background-color: #1a46a4;
+    background-color: #266eb6;
     padding: 60px 70px;
     border-radius: 10px;
     /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -33,6 +33,7 @@
     border: 1px solid #05418f;
     border-radius: 4px;
     color: black;
+    background-color: #d0d0d1;
 }
 
 /*.auth-form input:focus {

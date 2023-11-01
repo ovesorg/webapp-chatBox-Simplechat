@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatBot.js';
 import './chatbot.css';
+//import botIcon from './imagess/chatbot icon.jpg';
+
 //import logo from '.';
 function ChatBot() {
     const topic = useState('OvesSmart chat')[0]; // You can default it to any topic you like
+    //const [chatBotActive, setChatBotActive] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
@@ -64,6 +67,18 @@ function ChatBot() {
         }
     };
     return (
+        // <>
+        //     {chatBotActive ? (
+        //         <ChatBot />
+        //     ) : (
+        //             <img
+        //                 src={botIcon}
+        //                 alt="Open Chatbot"
+        //                 onClick={() => setChatBotActive(true)}
+        //                 style={{ cursor: 'pointer', position: 'fixed', bottom: '20px', right: '20px' }}
+        //             />
+        //         )}
+
         <div className="chatbot-container">
             <div className="chatbot-header"> {/* Add this block for the header */}
                 Topic: {topic}
@@ -101,6 +116,8 @@ function ChatBot() {
                  <button onClick={handleSubmit}>Submit</button>
              </div> */}
         </div>
+        // </>
+
     );
 }
 export default ChatBot;
