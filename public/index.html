@@ -24,34 +24,37 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <!-- <script src="path/to/your/chatbot.js" defer></script> -->
     <title>OVESSmart</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- <div id="chatbot-container">
+      <iframe id="chatbot-frame" src="URL_TO_YOUR_CHATBOT_APP" frameborder="0" style="display:none;"></iframe>
+      <button id="chatbot-icon">💬</button>
+    </div> -->
+    <!-- <script>
+      document.getElementById('chatbot-icon').onclick = function () {
+        var iframe = document.getElementById('chatbot-frame');
+        var icon = document.getElementById('chatbot-icon');
+        if (iframe.style.display === 'none') {
+          iframe.style.display = 'block';
+          icon.style.display = 'none';
+        } else {
+          iframe.style.display = 'none';
+          icon.style.display = 'block';
+        }
+      };
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-    <!-- <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-      var form = document.getElementById('form');
-        var input = document.getElementById('input');
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          if (input.value) {
-            socket.emit('chat message', input.value);
-            input.value = '';
-          }
-        });
+      window.onclick = function (event) {
+        var iframe = document.getElementById('chatbot-frame');
+        if (event.target === iframe) {
+          iframe.style.display = 'none';
+          document.getElementById('chatbot-icon').style.display = 'block';
+        }
+      };
     </script> -->
   </body>
 </html>

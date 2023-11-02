@@ -270,3 +270,32 @@ button:hover {
 
 }
 /* ... Existing styles ... */
+
+/* This CSS goes into the omnivoltaic.com website's stylesheet */
+
+/* #chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#chatbot-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    /* Adjust size as necessary */
+
+
+/*#chatbot-frame {
+    width: 400px;
+    height: 600px;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    right: 50px;*/
+        /* Adjust as necessary */
+    /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    /*border-radius: 10px;*/
+

@@ -14,7 +14,7 @@
 }
 
 .auth-form {
-    background-color: #266eb6;
+    background-color: #2b30bb;
     padding: 60px 70px;
     border-radius: 10px;
     /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -30,7 +30,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #05418f;
+    border: 1px solid #3d559c;
     border-radius: 4px;
     color: black;
     background-color: #d0d0d1;

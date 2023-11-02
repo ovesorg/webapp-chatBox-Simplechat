@@ -66,6 +66,13 @@ function ChatBot() {
             }, 1000);
         }
     };
+
+    // document.getElementById('chatbot-icon').onclick = function () {
+    //     // ... same as above ...
+    // };
+    // window.onclick = function (event) {
+    //     // ... same as above ...
+    // };
     return (
         // <>
         //     {chatBotActive ? (
