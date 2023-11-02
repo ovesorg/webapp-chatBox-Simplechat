@@ -11,7 +11,9 @@
     /* to ensure it's above other elements */
 
 
-ChatBot.css .messages-container {
+
+ChatBot.css
+.messages-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
@@ -112,22 +114,22 @@ input:focus {
         transform: translateY(-5px);
     }
 }
-.typing-indicator {
+/* .typing-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
-}
+} */
 
 
-.typing-indicator span {
+/* .typing-indicator span {
     width: 8px;
     height: 8px;
     margin: 0 2px;
     background: #3c8ed6;
     border-radius: 80%;
     animation: bounce 1s infinite;
-}
+} */
 
 .chatbot-container {
     width: 400px;
@@ -147,13 +149,10 @@ input:focus {
     /* Dark background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     /* Shadow for depth */
-    /*background-image: url('/src/imagess/techphoto2 backgroung.jpeg');*/
-    /* background-size: cover;
-        /* This will ensure that the image covers the full container */
-    /* background-repeat: no-repeat; */
-    /* Ensures the image doesn't repeat */
-    /* background-position: center center; */
-
+    flex-grow: 1;
+        /* The chatbot container will take up the remaining space */
+    margin-left: 20px;
+        /* Add some spacing between the history and the chat */
 }
 .input-container {
     display: flex;
@@ -220,14 +219,14 @@ button:hover {
 } */
 
 
-.typing-indicator {
+/* .typing-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     display: inline-block;
     margin-right: 10px;
-}
+} */
 
 .typing-indicator span {
     /*display: inline-block;*/
@@ -237,7 +236,7 @@ button:hover {
     background: #487398;
     border-radius: 80%;
     animation: bounce 0.8s infinite;
-    float: right;
+    float: left;
     /*clear: both;*/
     /* Other existing styles remain the same */
 

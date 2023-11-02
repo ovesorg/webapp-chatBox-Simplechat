@@ -13,7 +13,7 @@ function ChatBot() {
     const [ws, setWs] = useState(null);
     const messagesEndRef = useRef(null);
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
     useEffect(() => {
         const websocket = new WebSocket('wss://dev-chatbot.omnivoltaic.com/ws');
@@ -41,8 +41,12 @@ function ChatBot() {
     }, []);
 
     useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
+        // Check if the last message is from the user, if so, scroll to bottom
+        if (messages.length > 0 && messages[messages.length - 1].type === 'user') {
+            scrollToBottom();
+        }
+    }, [messages]); // Only re-run the effect if new messages are added to the list
+
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -51,28 +55,23 @@ function ChatBot() {
     };
     const handleSubmit = () => {
         if (input.trim() === '') return;
+        const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [
             ...prevMessages,
-            { type: 'user', text: input.trim() }
+            newMessage
         ]);
-        // console.log(ws);
-        // console.log(input)
         if (ws) {
             ws.send(input.trim()); // Send user's input to the backend
             setIsTyping(true);
             setInput('');  // Clear input field
+            // Call scrollToBottom after a slight delay to ensure the message has been rendered
             setTimeout(() => {
                 setIsTyping(false);
-            }, 1000);
+                scrollToBottom();
+            }, 100);
         }
     };
 
-    // document.getElementById('chatbot-icon').onclick = function () {
-    //     // ... same as above ...
-    // };
-    // window.onclick = function (event) {
-    //     // ... same as above ...
-    // };
     return (
         // <>
         //     {chatBotActive ? (
@@ -85,9 +84,8 @@ function ChatBot() {
         //                 style={{ cursor: 'pointer', position: 'fixed', bottom: '20px', right: '20px' }}
         //             />
         //         )}
-
         <div className="chatbot-container">
-            <div className="chatbot-header"> {/* Add this block for the header */}
+            <div className="chatbot-header">
                 Topic: {topic}
             </div>
             <div className="messages-container">
@@ -102,12 +100,14 @@ function ChatBot() {
                         <span></span>
                         <span></span>
                     </div>
-                    // When sending a message or waiting for a response
-                    //document.querySelector('.typing-indicator').classList.add('active');
-                    // Once the response is received and displayed
-                    //document.querySelector('.typing-indicator').classList.remove('active');
                 )}
-                <div ref={messagesEndRef} />
+                {/* {messages.map((message, index) => (
+                    <div key={message.id || `msg-${index}`} className={`message ${message.type}`}>
+                        {message.text}
+                    </div>
+                ))} */}
+
+                <div ref={messagesEndRef} /> {/* This is the element used to scroll to */}
             </div>
             <div className="input-container">
                 <input
@@ -117,12 +117,13 @@ function ChatBot() {
                     placeholder="Ask me anything..." />
                 <button onClick={handleSubmit}>Submit</button>
             </div>
+        </div>
 
-            {/* <div className="input-container">
+            /* <div className="input-container">
                  <input value={input} onChange={e => setInput(e.target.value)} placeholder="Ask me anything..." />
                  <button onClick={handleSubmit}>Submit</button>
-             </div> */}
-        </div>
+             </div> */
+
         // </>
 
     );
