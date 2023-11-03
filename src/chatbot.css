@@ -132,11 +132,11 @@ input:focus {
 } */
 
 .chatbot-container {
-    width: 400px;
+    width: 600px;
     /*height: 900;*/
     position: fixed;
     /* Fix the position */
-    top: 20px;
+    top: 40px;
     /* Position at bottom */
     left: 20px;
     /* Position to the right */
@@ -228,32 +228,32 @@ button:hover {
     margin-right: 10px;
 } */
 
-.typing-indicator span {
+/* .typing-indicator span { */
     /*display: inline-block;*/
-    width: 6px;
+    /*width: 6px;
     height: 10px;
     margin: 0 2px;
     background: #487398;
     border-radius: 80%;
     animation: bounce 0.8s infinite;
-    float: left;
+    float: left;*/
     /*clear: both;*/
     /* Other existing styles remain the same */
 
-}
 
-.typing-indicator span:nth-child(2) {
+
+/* .typing-indicator span:nth-child(2) {
     animation-delay: 0.2s;
-}
+} */
 
-.typing-indicator span:nth-child(3) {
+/* .typing-indicator span:nth-child(3) {
     animation-delay: 0.4s;
-}
+} */
 
-.typing-indicator.active {
+/* .typing-indicator.active {
     display: flex;
     /* This overrides the "display: none" from above */
-}
+ */
 
 .body {
     background-color: #dddddd48;
