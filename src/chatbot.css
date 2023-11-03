@@ -10,16 +10,15 @@
     z-index: 1000;*/
     /* to ensure it's above other elements */
 
-
-
 ChatBot.css
 .messages-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
     overflow-y: auto;
-    max-height: 400px;
+    /*max-height: 400px;
     /* Adjust this value based on your desired height */
+    /*max-height: 300px;*/
 
 }
 
@@ -37,15 +36,28 @@ ChatBot.css
 
 
 .message {
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 10px;
     color: #f5f5f5;
     display: inline-block;
     /* This will make it adapt its size to its content */
-    max-width: 70%;
+    /*max-width: 70%;
     /* Ensures the message doesn't fill the entire container */
     /* Increase vertical margin for spacing between messages */
+    max-width: 80%;
+
+
+}
+
+.message-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.message-row.bot {
+    justify-content: flex-start;
 }
 
 .message.user {
@@ -131,8 +143,9 @@ input:focus {
     animation: bounce 1s infinite;
 } */
 
+
 .chatbot-container {
-    width: 600px;
+    width: 700px;
     /*height: 900;*/
     position: fixed;
     /* Fix the position */
@@ -269,32 +282,17 @@ button:hover {
 
 }
 /* ... Existing styles ... */
-
-/* This CSS goes into the omnivoltaic.com website's stylesheet */
-
-/* #chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+@media (min-width: 577px) and (max-width: 768px) {
+    .chatbot-container {
+        width: 80%;
+        left: 10%;
+    }
 }
-
-#chatbot-icon {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 3rem;
-    /* Adjust size as necessary */
-
-
-/*#chatbot-frame {
-    width: 400px;
-    height: 600px;
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 50px;*/
-        /* Adjust as necessary */
-    /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    /*border-radius: 10px;*/
-
+@media (max-width: 576px) {
+    .chatbot-container {
+        width: 100%;
+        padding: 20px;
+        left: 0;
+        border-radius: 0;
+    }
+}
