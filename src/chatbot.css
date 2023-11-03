@@ -1,86 +1,57 @@
-/*.bot-icon {
-    width: 50px;
-    /* adjust as necessary */
-    /*height: 50px;
-    /* adjust as necessary */
-    /*position: fixed;
-    bottom: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 1000;*/
-    /* to ensure it's above other elements */
+/* chatbot.css */
 
-
-
-ChatBot.css
 .messages-container {
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
-    overflow-y: auto;
-    max-height: 400px;
-    /* Adjust this value based on your desired height */
-
 }
 
 .chatbot-header {
     background-color: #4075b1;
-    /* You can choose any color you like */
     color: rgb(0, 0, 0);
     padding: 10px;
     border-radius: 25px 25px 0 0;
-    /* Rounded corners at the top */
     text-align: center;
     font-weight: bold;
 }
 
+.message-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px 0;
+}
 
+.message-row.bot {
+    justify-content: flex-start;
+}
 
 .message {
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    color: #f5f5f5;
-    display: inline-block;
-    /* This will make it adapt its size to its content */
-    max-width: 70%;
-    /* Ensures the message doesn't fill the entire container */
-    /* Increase vertical margin for spacing between messages */
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #DCF8C6;
+    margin: 0 10px;
+    color: #000;
+        /* Black text color */
 }
 
 .message.user {
-    background-color: #4075b1;
-    border-bottom-right-radius: 0;
-    /* User's image icon */
-    background-image: url('../user.png');
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: 95% 5px;
-    padding-right: 50px;
-    /* Adjust based on your icon's width */
-    float: right;
-    /* Align user messages to the right */
-    /*clear: both;*/
-    /* Clear floats */
-    /*margin-bottom: 20px;*/
+    background-color: #A0E7E5;
+    /* Light teal background color for user messages */
 }
-.message.bot {
-    /*background-color: #0a429c;*/
-    border-bottom-left-radius: 0;
-    /* Bot's image icon */
-    background-image: url('../chatbot.webp');
-    background-repeat: no-repeat;
-    background-size: 40px;
-    background-position: 5px 5px;
-    padding-left: 50px;
-    /* Adjust based on your icon's width */
-    float: left;
-    /* Align bot messages to the left */
-    clear: both;
-    /* Clear floats */
-    background-color: #e0dddf;
-    color: rgb(0, 0, 0);
 
+.message.bot {
+    background-color: #FFC947;
+    /* Light orange background color for bot messages */
+}
+
+/* .message.bot {
+    background-color: #E1FFC7;
+} */
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #4075b1;
+    padding-top: 10px;
 }
 
 input {
@@ -96,88 +67,6 @@ input:focus {
     outline: none;
     box-shadow: 0 0 5px #93c3d3;
 }
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-10px);
-    }
-
-    60% {
-        transform: translateY(-5px);
-    }
-}
-/* .typing-indicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-} */
-
-
-/* .typing-indicator span {
-    width: 8px;
-    height: 8px;
-    margin: 0 2px;
-    background: #3c8ed6;
-    border-radius: 80%;
-    animation: bounce 1s infinite;
-} */
-
-.chatbot-container {
-    width: 600px;
-    /*height: 900;*/
-    position: fixed;
-    /* Fix the position */
-    top: 40px;
-    /* Position at bottom */
-    left: 20px;
-    /* Position to the right */
-    border: 2px solid #d9dcdd;
-    /* Updated border color */
-    padding: 40px;
-    border-radius: 30px;
-    /* Add some roundness */
-    background-color: #f9f9f957;
-    /* Dark background */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    /* Shadow for depth */
-    flex-grow: 1;
-        /* The chatbot container will take up the remaining space */
-    margin-left: 20px;
-        /* Add some spacing between the history and the chat */
-}
-.input-container {
-    display: flex;
-    border-top: 1px solid #4075b1;
-    /* Separator */
-    padding-top: 10px;
-}
-
-input {
-    flex-grow: 2;
-    padding: 2px;
-    border-radius: 3px;
-    border: none;
-    /* Remove default border */
-    background-color: 4#2f2f89;
-    /* Slightly different shade for input */
-    color: #000000;
-    /* Light text color */
-}
-
-input:focus {
-    outline: none;
-    box-shadow: 0 0 5px #4075b1;
-    /* Blue glow when focused */
-}
 
 button {
     padding: 5px 10px;
@@ -185,116 +74,57 @@ button {
     border: none;
     border-radius: 5px;
     background-color: #4075b1;
-    /* Tech blue for button */
     color: #080000;
-    /* Light text color */
     cursor: pointer;
-    /* Hand cursor on hover */
     transition: background 0.5s;
-    /* Smooth transition */
 }
-
-
 
 button:hover {
     background-color: #a0d2ea;
-    /* Darken button on hover */
 }
 
-.messages-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    overflow-y: auto;
-    max-height: 400px;
-    /* Adjust this value based on your desired height */
+.chatbot-container {
+    width: 600px;
+    position: fixed;
+    top: 40px;
+    left: 20px;
+    border: 2px solid #d9dcdd;
+    padding: 40px;
+    border-radius: 30px;
+    background-color: #f9f9f957;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-left: 20px;
 }
-.input-container {
-    display: flex;
-}
-
-/* input {
-    flex-grow: 1;
-    padding: 5px;
-} */
-
-
-/* .typing-indicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    display: inline-block;
-    margin-right: 10px;
-} */
-
-/* .typing-indicator span { */
-    /*display: inline-block;*/
-    /*width: 6px;
-    height: 10px;
-    margin: 0 2px;
-    background: #487398;
-    border-radius: 80%;
-    animation: bounce 0.8s infinite;
-    float: left;*/
-    /*clear: both;*/
-    /* Other existing styles remain the same */
-
-
-
-/* .typing-indicator span:nth-child(2) {
-    animation-delay: 0.2s;
-} */
-
-/* .typing-indicator span:nth-child(3) {
-    animation-delay: 0.4s;
-} */
-
-/* .typing-indicator.active {
-    display: flex;
-    /* This overrides the "display: none" from above */
- */
 
 .body {
     background-color: #dddddd48;
-    /* Replace with your desired color. */
     margin: 0;
     font-family: 'Arial', sans-serif;
-    /* Just an example. Use your desired font. */
     background-size: cover;
-    /* This will ensure that the image covers the full container */
     background-repeat: no-repeat;
-    /* Ensures the image doesn't repeat */
     background-position: center center;
-
-}
-/* ... Existing styles ... */
-
-/* This CSS goes into the omnivoltaic.com website's stylesheet */
-
-/* #chatbot-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
 }
 
-#chatbot-icon {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 3rem;
-    /* Adjust size as necessary */
+@media (max-width: 576px) {
+    .chatbot-container {
+        width: 100%;
+        padding: 20px;
+        left: 0;
+        border-radius: 0;
+    }
 
+    .messages-container {
+        max-height: 300px;
+    }
 
-/*#chatbot-frame {
-    width: 400px;
-    height: 600px;
-    border: none;
-    position: absolute;
-    bottom: 0;
-    right: 50px;*/
-        /* Adjust as necessary */
-    /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    /*border-radius: 10px;*/
+    .message {
+        max-width: 80%;
+    }
+}
 
+@media (min-width: 577px) and (max-width: 768px) {
+    .chatbot-container {
+        width: 80%;
+        left: 10%;
+    }
+}
