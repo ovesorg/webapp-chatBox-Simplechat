@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './chatbot.css';
 
@@ -34,7 +34,7 @@ function ChatBot() {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
-
+    
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') handleSubmit();
     };
