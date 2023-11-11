@@ -1,18 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './chatbot.css';
+import 'react-chat-elements/dist/main.css'
+import {MessageBox} from 'react-chat-elements';
+// import { ChatList } from "react-chat-elements";
+//import { MessageList } from "react-chat-elements";
+
+
 
 function ChatBot() {
     const topic = useState('OvesSmart chat')[0];
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
-    const [ws, setWs] = useState(null);
+    const [ws, setWs] = useState(null); // Moved useRef to top level
     const messagesEndRef = useRef(null);
-
+    // const [chatListData, setChatListData] = useState([]);
+    
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -47,43 +54,52 @@ function ChatBot() {
             ws.send(input.trim());
             setIsTyping(true);
             setInput('');
-            setTimeout(() => {
-                setIsTyping(false);
-                // scrollToBottom();
-                // function ChatBot() {
-            },1000);
+            // setTimeout(() => {
+            //     setIsTyping(false);
+            //     // scrollToBottom();
+            //     // function ChatBot() {
+            // },1000);
         }
     };
 
+    const styles={
+        marginTop:"5px"
+    }
+
+
     return (
+
         <div className="chatbot-container">
             <div className="chatbot-header">Topic: {topic}</div>
             <div className="messages-container">
                 {messages.map((message, index) => (
                     <div key={index} className={`message-row ${message.type}`}>
                         <div className={`message ${message.type}`}>
-                            {message.text}
+                            {/* {message.text} */}
+                            {message.type === "bot" ?
+                             <MessageBox
+                                position="left"
+                                title='OvSmart'
+                                type="text"
+                                text={message.text}
+                                    date={new Date() }// Use the timestamp from the message
+                             />
+                            : <MessageBox
+                                    styles={styles}
+                                    position='right'
+                                    title={message.type}
+                                    titleColor='grey'
+                                    type='text'
+                                    text={message.text}
+                                    date={new Date()}
+                              />
+                            }
+
                         </div>
                     </div>
                 ))}
                 <div ref={messagesEndRef} />
             </div>
-            {/* <div className="messages-container">
-                {messages.map((message, index) => (
-                    <Container key={index}>
-                        <Row>
-                            <Col
-                                xs={12}
-                                className={`message ${message.type}`}
-                                style={{ textAlign: message.type === 'user' ? 'right' : 'left' }}
-                            >
-                                {message.text}
-                            </Col>
-                        </Row>
-                    </Container>
-                ))}
-                <div ref={messagesEndRef} />
-            </div> */}
             <div className="input-container">
                 <input
                     value={input}
@@ -93,7 +109,9 @@ function ChatBot() {
                 />
                 <button onClick={handleSubmit}>Submit</button>
             </div>
-        </div>
+
+         </div>
+
     );
 }
 

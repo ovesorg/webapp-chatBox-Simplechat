@@ -1,0 +1,133 @@
+/* app/styles/custom.css */
+.bigdata-analytics-content {
+  color: #0ff;
+}
+.blog-card-content {
+  max-height: 100px;
+  overflow: hidden;
+}
+.w-100 {
+  width: 100%;
+}
+.accordion {
+  border: none;
+}
+.products-details-tabs {
+  text-align: inherit;
+}
+.products-details-tabs tr {
+  border: 1px solid #eeeeee;
+  border-bottom: none;
+  padding: 10px 15px;
+  color: #6084a4;
+}
+.products-details-tabs td,
+.products-details-tabs th {
+  padding: 10px 15px;
+}
+.products-content {
+  min-height: 95px;
+}
+.accordion__panel {
+  background: rgba(244, 244, 244, .38039);
+}
+.accordion__panel table {
+  background: white;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.single-image-box {
+  padding: 5px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #edf1f2;
+  border-style: solid;
+  margin: 5px;
+}
+.product-thumb {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.swiper-slide-thumb-active {
+  border-color: #0ff !important;
+}
+.swiper-slide-thumb-active {
+  border-width: 1px;
+}
+.swiper-slide-thumb-active .single-image-box {
+  border-style: none;
+}
+.product-thumb .swiper-slide-thumb-active {
+  border-color: #0ff !important;
+}
+.product-thumb .swiper-slide-thumb-active {
+  opacity: 1;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 5px;
+}
+.faq-accordion {
+  box-shadow: none;
+}
+.single-faq {
+  margin-top: 20px;
+}
+.mt-mb-10 {
+  margin-top: 20%;
+  margin-bottom: 20%;
+}
+.facebook-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.btn-primary {
+  color: #000;
+}
+.btn-light:hover {
+  color: #0ff;
+}
+.p-6 {
+  padding: 6px;
+}
+.mt-6 {
+  margin-top: 6px;
+}
+.bigdata-analytics-banner {
+  overflow: hidden;
+}
+.bigdata-analytics-banner .container {
+  position: relative;
+}
+.video-container {
+  overflow-x: hidden;
+}
+video {
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  right: 0;
+  min-width: 100vw;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%) translateY(-50%);
+}
+.cta {
+  margin-top: 10px;
+}
+.single-products {
+  margin-top: 9%;
+  background-color: #fff;
+}
+.shop-area .accordion__panel,
+.related-products .single-products {
+  background-color: #f4f4f461;
+}
