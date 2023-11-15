@@ -19,7 +19,7 @@ function ChatBot() {
     const [ws, setWs] = useState(null); // Moved useRef to top level
     const messagesEndRef = useRef(null);
     // const [chatListData, setChatListData] = useState([]);
-    
+
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
@@ -64,11 +64,9 @@ function ChatBot() {
 
     const styles={
         marginTop:"5px"
+
     }
-
-
     return (
-
         <div className="chatbot-container">
             <div className="chatbot-header">Topic: {topic}</div>
             <div className="messages-container">
