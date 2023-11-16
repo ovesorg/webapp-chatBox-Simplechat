@@ -28,13 +28,45 @@
     <title>OVESSmart</title>
   </head>
   <body>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
 
-    <!-- <div id="chatbot-container">
-      <iframe id="chatbot-frame" src="URL_TO_YOUR_CHATBOT_APP" frameborder="0" style="display:none;"></iframe>
-      <button id="chatbot-icon">💬</button>
+    <div id="chatbot-icon-container">
+      <img src="('./chatbot-icon.jpg')" alt="Chat with us" id="chatbot-icon" style="cursor:pointer;" />
+    </div>
+    
+    <div id="chatbot-container" style="display:none;">
+      <!-- Your chatbot application will be inserted here by React -->
+    </div>
+
+<!-- previous script for the previous chatbot icon -->
+    <!-- <script>
+      document.getElementById('chatbot-icon').onclick = function () {
+        var chatbotContainer = document.getElementById('chatbot-container');
+        if (chatbotContainer.style.display === 'none') {
+          chatbotContainer.style.display = 'block';
+        } else {
+          chatbotContainer.style.display = 'none';
+        }
+      };
+    </script> -->
+<!-- previous chatbot icon -->
+    <!-- <div id="chatbot-icon-container" style="display:none;">
+      <img src="('../chatbot icon.jpg')" alt="Chat with us" id="chatbot-icon" style="cursor:pointer;" />
     </div> -->
+
+    -- <!-- <div id="chatbot-container">
+      <!-- <iframe id="chatbot-frame" src="('../chatbot icon.jpg')" frameborder="0" style="display:none;"></iframe> -->
+      <!-- <button id="chatbot-icon">💬</button>
+    </div>> -->
+
+   <script>
+    document.getElementById('chatbot-icon').addEventListener('click', function () {
+      var chatbotContainer = document.getElementById('chatbot-container');
+      chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'block' : 'none';
+    });
+  </script>
     <!-- <script>
       document.getElementById('chatbot-icon').onclick = function () {
         var iframe = document.getElementById('chatbot-frame');
@@ -56,5 +88,6 @@
         }
       };
     </script> -->
+
   </body>
 </html>

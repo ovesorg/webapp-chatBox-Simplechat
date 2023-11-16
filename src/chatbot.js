@@ -19,6 +19,7 @@ function ChatBot() {
     const [ws, setWs] = useState(null); // Moved useRef to top level
     const messagesEndRef = useRef(null);
     // const [chatListData, setChatListData] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,6 +42,13 @@ function ChatBot() {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
+    useEffect(() => {
+    window.toggleChatbot = () => {
+        setIsOpen(!isOpen);
+    };
+    }, [isOpen]);
+
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') handleSubmit();
@@ -67,7 +75,7 @@ function ChatBot() {
 
     }
     return (
-        <div className="chatbot-container">
+        <div className={"chatbot-container $ {isOpen ? 'open' : 'closed'}"}>
             <div className="chatbot-header">Topic: {topic}</div>
             <div className="messages-container">
                 {messages.map((message, index) => (

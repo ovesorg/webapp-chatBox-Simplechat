@@ -16,6 +16,7 @@ function Auth({ onAuthenticated }) {
     };
 
     return (
+       
         <div className="auth-container">
             <div className="auth-form">
                 <h1>Omnivoltaic Energy Solutions</h1> {/* Moved this line here */}

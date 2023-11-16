@@ -114,7 +114,7 @@ button:hover {
 }
 
 .chatbot-container {
-    width: 900px;
+    width: 600px;
     position: fixed;
     top: 40px;
     left: 20px;
@@ -166,7 +166,12 @@ button:hover {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    cursor: pointer;
     /* Style as needed */
+}
+
+.chatbot-container.closed {
+    display: none;
 }
 
 #chatbot-container {
