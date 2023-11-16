@@ -160,6 +160,23 @@ button:hover {
     }
 }
 
+
+#chatbot-icon-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    /* Style as needed */
+}
+
+#chatbot-container {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    z-index: 1000;
+    /* Additional styling as needed */
+}
+
 /* chathistory container*/
 
 /* .chatbot-container {
