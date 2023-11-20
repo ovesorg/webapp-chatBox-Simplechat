@@ -1,16 +1,75 @@
 /* chatbot.css */
 
+/* General Styles */
+.body {
+    background-color: #c1c4d70b;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#chatbot-icon-container {
+    position: fixed;
+    bottom: 10px;
+    /* Adjust so it appears above the chat UI */
+    right: 20px;
+    z-index: 1002;
+    /* Higher than the chat UI */
+    cursor: pointer;
+    border-radius: 50%;
+    /* Makes it round */
+    /* Add more styles if needed */
+}
+
+#chatbot-icon-container img {
+    border-radius: 50%;
+    /* Makes the image inside the container round */
+}
+
+/* Chatbot Close Button */
+.chatbot-close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    /* Style the close button as needed */
+}
+
+/* Chatbot Container */
+.chatbot-container.closed {
+    display: none;
+}
+
+.chatbot-container.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 50px;
+        /* Height of the icon plus some margin */
+    right: 10px;
+    width: 300px;
+    /* Adjust width as needed */
+    height: 500px;
+    /* Adjust height as needed */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    z-index: 1001;
+}
+
+/* Messages Container */
 .messages-container {
+    flex-grow: 1;
     max-height: 400px;
     overflow-y: auto;
     margin-bottom: 10px;
-    /*max-height: 400px;
-    overflow-y: auto;*/
     background-color: rgba(92, 139, 193, 0.138);
-
-
 }
 
+/* Chat Header */
 .chatbot-header {
     background-color: #5579a2;
     color: rgb(0, 0, 0);
@@ -18,13 +77,11 @@
     border-radius: 25px 25px 0 0;
     text-align: center;
     font-weight: bold;
-
-
 }
 
+/* Message Rows and Messages */
 .message-row {
     display: flex;
-    justify-content: flex-end;
     margin: 10px 0;
 }
 
@@ -32,58 +89,52 @@
     justify-content: flex-start;
 }
 
+.message-row.user {
+    justify-content: flex-end;
+}
+
 .message {
     padding: 5px;
     border-radius: 5px;
-    /* background-color: #d7d7d7; */
     margin: 0 10px;
     color: #000;
-        /* Black text color */
+    max-width: 100%;
+    word-break: break-word;
+    /* Add specific styles for user and bot messages if needed */
 }
 
 .message.user {
-    /* background-color: #c0c1c1; */
-
     border-bottom-right-radius: 0;
-    /* User's image icon */
-    background-image: url('../user.png');
+    /* background-image: url('./imagess/user.png'); */
     background-repeat: no-repeat;
     background-size: 20px;
-    background-position: 95% 5px;
-    padding-right: 60px;
-    /* Adjust based on your icon's width */
+    background-position: 100% 0px;
+    /* padding-right: 10px; */
     float: left;
-    width: 60%;
+    width: 100%;
 }
-.message.bot {
-    /*background-color: #0a429c;*/
-    border-bottom-left-radius: 0;
-    /* Bot's image icon */
-    /* background-image: url('../chatbot.webp');*/
-    background-image: url('../ovesLogoimage.png');
-    background-repeat: no-repeat;
-    background-size: 25px;
-    background-position: 5px 5px;
-    padding-left: 40px;
-    /* Adjust based on your icon's width */
-    float: right;
-    /* Align bot messages to the left */
-    clear: both;
-    /* Clear floats */
-    /* background-color: #e0dddf; */
-    color: rgb(0, 0, 0);
-    width: 80%;
-}
-/* .message.bot {
-    background-color: #E1FFC7;
-} */
 
+.message.bot {
+    border-bottom-left-radius: 0;
+    /* background-image: url('../imagess/ovesLogoimage.png'); */
+    background-repeat: no-repeat;
+    /* background-size: 25px; */
+    /* background-position: 5px 5px; */
+    /* padding-left: 40px; */
+    float: right;
+    clear: both;
+    color: rgb(0, 0, 0);
+    width: 100%;
+}
+
+/* Input Container */
 .input-container {
     display: flex;
     border-top: 1px solid #4075b1;
     padding-top: 10px;
 }
 
+/* Input and Button */
 input {
     flex-grow: 2;
     padding: 5px;
@@ -113,34 +164,13 @@ button:hover {
     background-color: #a0d2ea;
 }
 
-.chatbot-container {
-    width: 600px;
-    position: fixed;
-    top: 40px;
-    left: 20px;
-    border: 2px solid #d9dcdd;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: #f3f3f32e;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-    margin-left: 20px;
-    height: 100;
-}
-
-.body {
-    background-color: #c1c4d70b;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-
+/* Responsive Design Adjustments */
 @media (max-width: 576px) {
     .chatbot-container {
         width: 80%;
         padding: 20px;
-        left: 10;
+        right: 10px;
+        /* Adjust for small screens */
         border-radius: 0;
     }
 
@@ -153,63 +183,30 @@ button:hover {
     }
 }
 
-@media (min-width: 577px) and (max-width: 768px) {
-    .chatbot-container {
+/* Responsive Design Adjustments */
+@media (max-width: 576px) {
+    .chatbot-container.open {
         width: 80%;
-        left: 20%;
+        padding: 10px;
+        right: 10px;
+        /* Adjust for small screens */
+        border-radius: 10px;
+    }
+
+    .messages-container {
+        max-height: 300px;
+    }
+
+    .message {
+        max-width: 80%;
     }
 }
 
-
-#chatbot-icon-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    cursor: pointer;
-    /* Style as needed */
+@media (min-width: 577px) and (max-width: 768px) {
+    .chatbot-container.open {
+        width: 60%;
+        /* Adjust for medium screens */
+        right: 20%;
+        /* Centering on medium screens */
+    }
 }
-
-.chatbot-container.closed {
-    display: none;
-}
-
-#chatbot-container {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    z-index: 1000;
-    /* Additional styling as needed */
-}
-
-/* chathistory container*/
-
-/* .chatbot-container {
-    display: flex;
-    flex-direction: row;
-    height: 100%; */
-
-
-/* .chat-conversation-container {
-    /* Your existing styles for the chat container */
-
-
-/* .chat-history-container {
-    border-left: 1px solid #ccc;
-    overflow-y: auto;
-    /* If you want a scrollable history */
-
-
-/* .chat-history-header {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-} */
-
-/* .new-chat-button {
-    /* Style your new chat button */
-
-
-/* .chat-history-content {
-    padding: 10px;
-    /* Styles for your chat history list */
-
