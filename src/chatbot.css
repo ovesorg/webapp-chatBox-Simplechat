@@ -1,25 +1,79 @@
 /* chatbot.css */
 
 .messages-container {
-    max-height: 400px;
+    height: 330px;
     overflow-y: auto;
     margin-bottom: 10px;
-    /*max-height: 400px;
-    overflow-y: auto;*/
-    background-color: rgba(92, 139, 193, 0.138);
+    overflow-x: hidden;
+    /* background-color: rgba(92, 139, 193, 0.138); */
 
 
 }
 
+.chatbot-container {
+    width: 350px;
+    border: 2px solid #d9dcdd;
+    background-color: white;
+    margin-left: 20px;
+    height: 450px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+    position: fixed;
+    bottom: 70px;
+    right: 40px;
+}
+
+.input-container {
+    display: flex;
+    padding-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+
+input {
+    flex-grow: 2;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(190, 186, 186);
+    border-radius: 20px;
+    color: #000000;
+    width: 90%;
+}
+.message-button {
+    margin-bottom: 5px;
+}
+
+.submit-button {
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 50%;
+    background-color: #5579a2;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
 .chatbot-header {
     background-color: #5579a2;
-    color: rgb(0, 0, 0);
+    color: white;
     padding: 10px;
-    border-radius: 25px 25px 0 0;
     text-align: center;
     font-weight: bold;
+    margin: 0 !important;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
 
-
+.minus-button {
+    margin-left: 100px;
+    background: none;
+    border: none;
 }
 
 .message-row {
@@ -42,19 +96,55 @@
 }
 
 .message.user {
-    /* background-color: #c0c1c1; */
-
     border-bottom-right-radius: 0;
-    /* User's image icon */
-    background-image: url('../user.png');
+    /* background-image: url('../user.png'); */
     background-repeat: no-repeat;
     background-size: 20px;
     background-position: 95% 5px;
-    padding-right: 60px;
-    /* Adjust based on your icon's width */
-    float: left;
-    width: 60%;
+    /* padding-right: 60px; */
+    /* float: left; */
+    /* width: 60%; */
+    border-radius: 15px;
 }
+
+.rce-mbox {
+    box-shadow: none !important;
+    background-color: rgba(228, 228, 228, 0.729) !important;
+    border-radius: 15px !important;
+    max-width:230px;
+}
+
+.rce-mbox.rce-mbox-right .rce-mbox-title {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.rce-mbox.rce-mbox-right {
+    background-color: #5579a2 !important;
+    color: white;
+    font-weight: 500;
+    border-radius: 15px;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+.rce-mbox.rce-mbox-right .rce-mbox-time {
+    color: rgba(255, 255, 255, 0.633) !important;
+}
+
+.rce-mbox.rce-mbox-left {
+    background-color: grey;
+    color: white;
+    border-radius: 15px;
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+}
+
+.rce-mbox-right-notch {
+display: none;
+}
+
+.rce-mbox-left-notch {
+    display: none;
+    }
 .message.bot {
     /*background-color: #0a429c;*/
     border-bottom-left-radius: 0;
@@ -64,68 +154,35 @@
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: 5px 5px;
-    padding-left: 40px;
+    padding-left: 5px;
+    padding-top: 30px;
     /* Adjust based on your icon's width */
     float: right;
     /* Align bot messages to the left */
     clear: both;
     /* Clear floats */
-    /* background-color: #e0dddf; */
-    color: rgb(0, 0, 0);
-    width: 80%;
+    color: black;
+    font-weight: 500;
+    /* width: 80%; */
+    max-width:200px;
+
 }
 /* .message.bot {
     background-color: #E1FFC7;
 } */
 
-.input-container {
-    display: flex;
-    border-top: 1px solid #4075b1;
-    padding-top: 10px;
-}
-
-input {
-    flex-grow: 2;
-    padding: 5px;
-    border-radius: 3px;
-    border: none;
-    background-color: #7d98c632;
-    color: #000000;
-}
 
 input:focus {
     outline: none;
     box-shadow: 0 0 5px #93c3d3;
 }
 
-button {
-    padding: 5px 10px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #5579a2;
-    color: #080000;
-    cursor: pointer;
-    transition: background 0.5s;
-}
 
-button:hover {
+
+.submit-button:hover {
     background-color: #a0d2ea;
 }
 
-.chatbot-container {
-    width: 900px;
-    position: fixed;
-    top: 40px;
-    left: 20px;
-    border: 2px solid #d9dcdd;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: #f3f3f32e;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
-    margin-left: 20px;
-    height: 100;
-}
 
 .body {
     background-color: #c1c4d70b;
@@ -136,75 +193,56 @@ button:hover {
     background-position: center center;
 }
 
-@media (max-width: 576px) {
-    .chatbot-container {
-        width: 80%;
-        padding: 20px;
-        left: 10;
-        border-radius: 0;
-    }
-
-    .messages-container {
-        max-height: 300px;
-    }
-
-    .message {
-        max-width: 80%;
-    }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-    .chatbot-container {
-        width: 80%;
-        left: 20%;
-    }
-}
-
-
-#chatbot-icon-container {
+.initialize-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
-    /* Style as needed */
+    height: 40px;
+    width: 90px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: #5579a2;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-#chatbot-container {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    z-index: 1000;
-    /* Additional styling as needed */
+.initialize-button p {
+
+    margin-top: 5px;
 }
 
-/* chathistory container*/
+/* .initialize-chat-section {
 
-/* .chatbot-container {
-    display: flex;
-    flex-direction: row;
-    height: 100%; */
-
-
-/* .chat-conversation-container {
-    /* Your existing styles for the chat container */
-
-
-/* .chat-history-container {
-    border-left: 1px solid #ccc;
-    overflow-y: auto;
-    /* If you want a scrollable history */
-
-
-/* .chat-history-header {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
 } */
 
-/* .new-chat-button {
-    /* Style your new chat button */
-
-
-/* .chat-history-content {
+.informative-text {
+    font-weight: 400;
+    font-size: 15px;
+    height: 90px;
+    width: 300px;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 30px;
+    right: 120px;
+    background-color: rgba(193, 190, 190, 0.562);
+}
+.informative-text p {
     padding: 10px;
-    /* Styles for your chat history list */
+}
 
+.initialize-chat-section span {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+.initialize-chat-section svg {
+    margin-left: 10px;
+}
+.close-icon-button {
+    border: none;
+    background: none;
+    position: fixed;
+    bottom: 110px;
+    right: 420px;
+}
