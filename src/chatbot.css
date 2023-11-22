@@ -224,7 +224,7 @@ input:focus {
     position: fixed;
     bottom: 30px;
     right: 120px;
-    background-color: rgba(193, 190, 190, 0.562);
+    background-color: #dad9d9;
 }
 .informative-text p {
     padding: 10px;

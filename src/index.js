@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import App from './App';
-import ChatBot from './chatbot'
 import reportWebVitals from './reportWebVitals';
-// import AuthPage from './AuthPage';
+import App from './App';
 
-function App() {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // if (!isAuthenticated) {
-  //   return <AuthPage onAuthenticated={setIsAuthenticated} />;
-  // }
-  return <ChatBot />;
-}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

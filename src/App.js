@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './chatbot.css';
 import AuthPage from './AuthPage';
+import ChatBot from './chatbot';
 
-
-function App() {}
+export default function App() {
+    return (
+        <ChatBot/>
+    )
+}
 
 
 

@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './chatbot.css';
 import 'react-chat-elements/dist/main.css'
 import { MessageBox } from 'react-chat-elements';
-// import { ChatList } from "react-chat-elements";
-//import { MessageList } from "react-chat-elements";
+import AuthentificationPage from './pages/Authentication';
 
 
 
@@ -20,6 +16,7 @@ function ChatBot() {
     const messagesEndRef = useRef(null);
     const [informativeTextOpen, setInformativeTextOpen] = useState(true)
     const [isChatModalOpen, setChatModalOpen] = useState(false)
+    const [isSignedIn, setIsSignedIn] = useState(false)
     // const [chatListData, setChatListData] = useState([]);
 
     const scrollToBottom = () => {
@@ -28,6 +25,7 @@ function ChatBot() {
 
     const handleChatOpen = () => {
         setChatModalOpen(true)
+        setInformativeTextOpen(false)
     }
 
     const handleChatClose = () => {
@@ -49,6 +47,17 @@ function ChatBot() {
     }, []);
 
     useEffect(() => {
+        let infotextmodal = localStorage.getItem('info-text-modal')
+        let user = localStorage.getItem('user')
+        if (infotextmodal === 'true') {
+            setInformativeTextOpen(false)
+        }
+        if (user) {
+            setIsSignedIn(true)
+        }
+    }, [])
+
+    useEffect(() => {
         scrollToBottom();
     }, [messages]);
 
@@ -57,6 +66,7 @@ function ChatBot() {
     };
 
     const handleSubmit = () => {
+
         if (input.trim() === '') return;
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -64,15 +74,11 @@ function ChatBot() {
             ws.send(input.trim());
             setIsTyping(true);
             setInput('');
-            // setTimeout(() => {
-            //     setIsTyping(false);
-            //     // scrollToBottom();
-            //     // function ChatBot() {
-            // },1000);
         }
     };
 
     const handleCloseInformativetext = () => {
+        localStorage.setItem('info-text-modal', true)
         setInformativeTextOpen(false)
     }
     const styles = {
@@ -80,57 +86,55 @@ function ChatBot() {
 
     }
     return (
-
         <>
+            {isChatModalOpen ? (
+                <div className="chatbot-container">
+                    <div className="chatbot-header">Topic: {topic}
+                        <button className='minus-button' onClick={handleChatClose} >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="1em" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
+                    </div>
+                    <div className="messages-container">
+                        {messages.map((message, index) => (
+                            <div key={index} className={`message-row ${message.type}`}>
+                                <div className={`message ${message.type}`}>
+                                    {/* {message.text} */}
+                                    {message.type === "bot" ?
+                                        <MessageBox
+                                            position="left"
+                                            title='OvSmart'
+                                            type="text"
+                                            text={message.text}
+                                            date={new Date()}// Use the timestamp from the message
+                                        />
+                                        : <MessageBox
+                                            styles={styles}
+                                            position='right'
+                                            title={message.type}
+                                            titleColor='grey'
+                                            type='text'
+                                            text={message.text}
+                                            date={new Date()}
+                                        />
+                                    }
 
-{isChatModalOpen ? (
-            <div className="chatbot-container">
-                <div className="chatbot-header">Topic: {topic}
-                <button className='minus-button' onClick={handleChatClose} >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="1em" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/></svg></button>
-                </div>
-                <div className="messages-container">
-                    {messages.map((message, index) => (
-                        <div key={index} className={`message-row ${message.type}`}>
-                            <div className={`message ${message.type}`}>
-                                {/* {message.text} */}
-                                {message.type === "bot" ?
-                                    <MessageBox
-                                        position="left"
-                                        title='OvSmart'
-                                        type="text"
-                                        text={message.text}
-                                        date={new Date()}// Use the timestamp from the message
-                                    />
-                                    : <MessageBox
-                                        styles={styles}
-                                        position='right'
-                                        title={message.type}
-                                        titleColor='grey'
-                                        type='text'
-                                        text={message.text}
-                                        date={new Date()}
-                                    />
-                                }
-
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    <div ref={messagesEndRef} />
-                </div>
-                <div className="input-container">
-                    <input
-                        value={input}
-                        onChange={e => setInput(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        placeholder="Ask me anything..."
-                    />
-                    <button onClick={handleSubmit} className='submit-button'>
-                        <svg className='message-button' fill='white' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z" /></svg>
-                    </button>
-                </div>
-            </div>): ''
-}
+                        ))}
+                        <div ref={messagesEndRef} />
+                    </div>
+                    <div className="input-container">
+                        <input
+                            value={input}
+                            onChange={e => setInput(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                            placeholder="Ask me anything..."
+                        />
+                        <button onClick={handleSubmit} className='submit-button'>
+                            <svg className='message-button' fill='white' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z" /></svg>
+                        </button>
+                    </div>
+                </div>) : ''
+            }
 
             <div className='initialize-chat-section'>
                 <div className='initialize-button' onClick={handleChatOpen}>
@@ -153,6 +157,7 @@ function ChatBot() {
                 </div>}
             </div>
         </>
+
     );
 }
 
