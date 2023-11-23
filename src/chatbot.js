@@ -14,7 +14,7 @@ function ChatBot() {
     const [isTyping, setIsTyping] = useState(false);
     const [ws, setWs] = useState(null); // Moved useRef to top level
     const messagesEndRef = useRef(null);
-    const [informativeTextOpen, setInformativeTextOpen] = useState(true)
+    const [informativeTextOpen, setInformativeTextOpen] = useState(false)
     const [isChatModalOpen, setChatModalOpen] = useState(false)
     const [isSignedIn, setIsSignedIn] = useState(false)
     // const [chatListData, setChatListData] = useState([]);
@@ -33,7 +33,11 @@ function ChatBot() {
     }
 
     useEffect(() => {
-        const websocket = new WebSocket('wss://dev-chatbot.omnivoltaic.com/ws');
+        let credentials = localStorage.getItem('web-id')
+
+        let url = `ws://192.168.1.16:8000/ws`
+        console.log(url,  '---38')
+        const websocket = new WebSocket(url);
         setWs(websocket);
         websocket.onopen = () => console.log("Connected to the WebSocket server");
         websocket.onmessage = (event) => {
@@ -51,6 +55,8 @@ function ChatBot() {
         let user = localStorage.getItem('user')
         if (infotextmodal === 'true') {
             setInformativeTextOpen(false)
+        } else {
+            setInformativeTextOpen(true)
         }
         if (user) {
             setIsSignedIn(true)
@@ -60,6 +66,7 @@ function ChatBot() {
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') handleSubmit();
@@ -81,30 +88,37 @@ function ChatBot() {
         localStorage.setItem('info-text-modal', true)
         setInformativeTextOpen(false)
     }
+
+    const handleLogin = (credentials) => {
+        console.log(credentials, '---89--Credentials')
+        setIsSignedIn(true)
+    }
     const styles = {
         marginTop: "5px"
 
     }
+
     return (
         <>
             {isChatModalOpen ? (
                 <div className="chatbot-container">
-                    <div className="chatbot-header">Topic: {topic}
+                    {isSignedIn  ? (<> <div className="chatbot-header">Topic: {topic}
                         <button className='minus-button' onClick={handleChatClose} >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="1em" viewBox="0 0 448 512"><path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>
+                            </button>
                     </div>
                     <div className="messages-container">
                         {messages.map((message, index) => (
                             <div key={index} className={`message-row ${message.type}`}>
                                 <div className={`message ${message.type}`}>
-                                    {/* {message.text} */}
+
                                     {message.type === "bot" ?
                                         <MessageBox
                                             position="left"
                                             title='OvSmart'
                                             type="text"
                                             text={message.text}
-                                            date={new Date()}// Use the timestamp from the message
+                                            date={new Date()}
                                         />
                                         : <MessageBox
                                             styles={styles}
@@ -132,8 +146,8 @@ function ChatBot() {
                         <button onClick={handleSubmit} className='submit-button'>
                             <svg className='message-button' fill='white' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z" /></svg>
                         </button>
-                    </div>
-                </div>) : ''
+                    </div></>): <AuthentificationPage  handleChatClose={handleChatClose} onLogin={handleLogin}/>}
+                </div> ) : ''
             }
 
             <div className='initialize-chat-section'>
