@@ -60,7 +60,7 @@ input {
 }
 
 .chatbot-header {
-    background-color: #5579a2;
+    background: linear-gradient(90deg, #0b0b45 0%, #090979 35%, #00ffff 100%);
     color: white;
     padding: 10px;
     text-align: center;
@@ -121,7 +121,7 @@ input {
 
 .rce-mbox.rce-mbox-right {
     margin-top: 20px !important;
-    background-color: #5579a2 !important;
+    background: linear-gradient(90deg, #0b0b45 0%, #090979 35%, #00ffff 100%) !important;
     color: white;
     font-weight: 500;
     border-radius: 15px;
@@ -199,23 +199,22 @@ input:focus {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    height: 40px;
-    width: 90px;
-    border: 1px solid rgba(0, 0, 0, 0);
-    background-color: #5579a2;
+    height: 50px;
+    width: 50px;
+    /* border: 1px solid rgba(0, 0, 0, 0); */
+
+    
+    background: linear-gradient(to bottom right, #0b0b45 0%, #090979 35%, #00ffff 100%);
     color: white;
-    border-radius: 20px;
+    border-radius: 50%;
     cursor: pointer;
 }
 
 .initialize-button p {
-
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
 }
 
-/* .initialize-chat-section {
-
-} */
 
 .informative-text {
     color: black;

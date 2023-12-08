@@ -11,7 +11,6 @@ function ChatBot() {
     const topic = useState('OvesSmart chat')[0];
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [isTyping, setIsTyping] = useState(false);
     const [ws, setWs] = useState(null); // Moved useRef to top level
     const messagesEndRef = useRef(null);
     const [informativeTextOpen, setInformativeTextOpen] = useState(false)
@@ -33,17 +32,14 @@ function ChatBot() {
     }
 
     useEffect(() => {
-        let credentials = localStorage.getItem('web-id')
-
         let url = `ws://192.168.1.16:8000/ws`
-        console.log(url,  '---38')
         const websocket = new WebSocket(url);
         setWs(websocket);
         websocket.onopen = () => console.log("Connected to the WebSocket server");
         websocket.onmessage = (event) => {
             const botMessage = event.data;
             setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
-            setIsTyping(true);
+
         };
         websocket.onerror = (event) => console.error("WebSocket Error:", event);
         websocket.onclose = () => console.log("WebSocket connection closed");
@@ -79,7 +75,6 @@ function ChatBot() {
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
             ws.send(input.trim());
-            setIsTyping(true);
             setInput('');
         }
     };
@@ -89,8 +84,7 @@ function ChatBot() {
         setInformativeTextOpen(false)
     }
 
-    const handleLogin = (credentials) => {
-        console.log(credentials, '---89--Credentials')
+    const handleLogin = () => {
         setIsSignedIn(true)
     }
     const styles = {
@@ -154,7 +148,6 @@ function ChatBot() {
                 <div className='initialize-button' onClick={handleChatOpen}>
                     <p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="20px" viewBox="0 0 512 512"><path d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4l0 0 0 0 0 0 0 0 .3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z" /></svg>
-                        <span>Help</span>
                     </p>
                 </div>
 

@@ -9,9 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function AuthentificationPage(props) {
     const [page, setPage] = useState('signin')
     const [user, setUser] = useState([]);
-    const [profile, setProfile] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const[credentials, setCredentials] = useState('')
+    
     const handlePageChange = () => {
         if (page === 'signin') {
             setPage('signup')
@@ -24,10 +22,6 @@ export default function AuthentificationPage(props) {
         onError: (error) => console.log('Login Failed:', error)
     });
 
-
-    const loginService = () => {
-        
-    }
 
     useEffect(
         () => {
@@ -48,11 +42,9 @@ export default function AuthentificationPage(props) {
                         toast.success("Logged in Successful. Welcome!", {
                             position: toast.POSITION.TOP_RIGHT,
                         });
-                        setIsLoggedIn(true)
                         setTimeout(() => {
                             localStorage.setItem('user', res.data.email)
                             props.onLogin(credentials)
-                            setProfile(res.data);
                         }, 2000)
                     })
                     .catch((err) => console.log(err));

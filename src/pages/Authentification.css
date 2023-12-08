@@ -1,6 +1,7 @@
 .auth-header {
     height: 150px;
-    background-color:#5579a2;
+    /* background: linear-gradient(to right, #0b0b45 , #00ffff); */
+    background: linear-gradient(90deg, #0b0b45 0%, #090979 35%, #00ffff 100%);
     border-radius: 15px;
     /* border-bottom-right-radius: 15px; */
 }
