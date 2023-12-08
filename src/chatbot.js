@@ -32,7 +32,7 @@ function ChatBot() {
     }
 
     useEffect(() => {
-        let url = `ws://192.168.1.16:8000/ws`
+        let url = `wss://dev-chatbot.omnivoltaic.com/ws`
         const websocket = new WebSocket(url);
         setWs(websocket);
         websocket.onopen = () => console.log("Connected to the WebSocket server");
@@ -154,8 +154,7 @@ function ChatBot() {
                 {informativeTextOpen && <div>
                     <div className='informative-text'>
                         <p>
-                            Hello I can Connect you with an Omnivoltaic representative
-                            or answer questions you have about our products
+                        Need Help, Let's Chat
                         </p>
                     </div>
                     <button className='close-icon-button' onClick={handleCloseInformativetext} >

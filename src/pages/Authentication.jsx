@@ -4,8 +4,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
+import Emoji from "../components/Emoji";
+import logo from "../imagess/ovesLogo.png"
 export default function AuthentificationPage(props) {
     const [page, setPage] = useState('signin')
     const [user, setUser] = useState([]);
@@ -61,8 +61,9 @@ export default function AuthentificationPage(props) {
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="white" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg></button>
             <div className="auth-header">
                 <div className="container">
-                    {page === 'signin' ? <h1>Login </h1> : <h1>Sign Up</h1>}
-                    <p>Welcome to Onivoltaic. Please {page === 'signin' ? "Sign In" : "Sign Up"} </p>
+                    {/* {page === 'signin' ? <h1>Login </h1> : <h1>Sign Up</h1>} */}
+                    <h1> <img style={{height: "30px", width: "30px", marginBottom: "7px", marginRight: "10px"}} src={logo} /> Hi there! <Emoji symbol="👋"/></h1>
+                    <p>Welcome to Omnivoltaic Assist.</p>
                 </div>
             </div>
             <div className="content-container">
