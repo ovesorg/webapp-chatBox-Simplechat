@@ -54,7 +54,7 @@ input {
     margin-left: 10px;
     border: none;
     border-radius: 50%;
-    background-color: #5579a2;
+    background: linear-gradient(90deg, #0b0b45 0%, #090979 35%, #00ffff 100%);
     cursor: pointer;
     transition: background 0.5s;
 }
