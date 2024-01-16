@@ -28,13 +28,12 @@ p{
     align-items: center;
 }
 .google-login {
-    width: 65%;
+    width: 70%;
     border-radius: 20px;
     height: 40px;
     background-color: white;
     border: 1px solid #747775;
     color: #1F1F1F;
-    margin-top: 20px;
     font-weight: 500;
 }
 
@@ -45,7 +44,6 @@ p{
     background-color: white;
     border: 1px solid #747775;
     color: #1F1F1F;
-    margin-top: 20px;
     font-weight: 500;
 }
 
@@ -67,28 +65,44 @@ margin-right: 10px;
 }
 
 .message-box {
-    height: 130px;
+    /* height: 130px; */
     width: 85%;
     border-radius: 10px;
     border: 1px solid rgba(128, 128, 128, 0.173);
 }
 
 .top {
-    height:35%;
+    height:40%;
     background-color: rgba(128, 128, 128, 0.173);
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 
 }
 .top p {
+    text-align: center;
     margin-top: 0;
     color: black;
-    font-size: 14px;
+    font-size: 13px;
     margin-left: 5px;
     margin-right: 5px;
 }
-.content {
+.google-button {
     display: flex;
     justify-content: center;
-    
+}
+.microsoft-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.signInButtonMicrosoft {
+    width: 70%;
+    border-radius: 20px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #747775;
+    color: #1F1F1F;
+    font-weight: 500;
 }

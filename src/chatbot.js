@@ -4,7 +4,9 @@ import './chatbot.css';
 import 'react-chat-elements/dist/main.css'
 import { MessageBox } from 'react-chat-elements';
 import AuthentificationPage from './pages/Authentication';
-
+import Rating from '@mui/material/Rating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 
 function ChatBot() {
@@ -16,7 +18,31 @@ function ChatBot() {
     const [informativeTextOpen, setInformativeTextOpen] = useState(false)
     const [isChatModalOpen, setChatModalOpen] = useState(false)
     const [isSignedIn, setIsSignedIn] = useState(false)
-    // const [chatListData, setChatListData] = useState([]);
+    const [value, setValue] = useState(2);
+    const [feedback, setFeedback] = useState('');
+    const [isDivClicked, setIsDivClicked] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const handleClick = () => {
+        setLoading(true)
+        let a = messages.slice(-2)
+        let userQuestion = a[0]['text']
+        let botResponse = a[1]['text']
+        const data = {
+            user_query: userQuestion,
+            bot_response: botResponse,
+            user_expected_response: feedback,
+            user_rating: value
+        }
+        const jsonData = JSON.stringify(data)
+        console.log(jsonData, '----37----')
+        if(ws) {
+            ws.send(jsonData)
+            setIsDivClicked(true)
+            setLoading(false)
+            setValue(2)
+            setFeedback('')
+        }
+    };
 
 
     const scrollToBottom = () => {
@@ -24,12 +50,15 @@ function ChatBot() {
     };
 
     const handleChatOpen = () => {
+        window.parent.postMessage({ width: '600px', height: '900px' }, '*');
         setChatModalOpen(true)
         setInformativeTextOpen(false)
+
     }
 
     const handleChatClose = () => {
         setChatModalOpen(false)
+        window.parent.postMessage({ width: '100px', height: '80px' }, '*');
     }
 
     useEffect(() => {
@@ -40,7 +69,7 @@ function ChatBot() {
         websocket.onmessage = (event) => {
             const botMessage = event.data;
             setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
-
+            setIsDivClicked(false);
         };
         websocket.onerror = (event) => console.error("WebSocket Error:", event);
         websocket.onclose = () => console.log("WebSocket connection closed");
@@ -103,18 +132,20 @@ function ChatBot() {
                         </button>
                     </div>
                         <div className="messages-container">
-                            {messages.map((message, index) => (
-                                <div key={index} className={`message-row ${message.type}`}>
-                                    <div className={`message ${message.type}`}>
-                                        {message.type === "bot" ?
-                                            <MessageBox
-                                                position="left"
-                                                title='OvSmart'
-                                                type="text"
-                                                text={message.text}
-                                                date={new Date()}
-                                            />
-                                            :
+                            {messages.map((message, index) => {
+                                const isLastBotMessage = message.type === "bot" && !messages.slice(index + 1).some(m => m.type === "bot");
+                                return (
+                                    <div key={index} className={`message-row ${message.type}`}>
+                                        <div className={`message ${message.type}`}>
+                                            {message.type === "bot" ?
+                                                <MessageBox
+                                                    position="left"
+                                                    title='OvSmart'
+                                                    type="text"
+                                                    text={message.text}
+                                                    date={new Date()}
+                                                />
+                                                :
                                                 <MessageBox
                                                     styles={styles}
                                                     position='right'
@@ -124,13 +155,43 @@ function ChatBot() {
                                                     text={message.text}
                                                     date={new Date()}
                                                 />
+                                            }
+                                            {isLastBotMessage && !isDivClicked &&
 
-                                        }
+                                                <div className='response-style'>
+                                                    <p>How did you find the Response</p>
+                                                    <div className='response-container'>
+                                                        <div className='rating'>
+                                                            <p>Rating</p>
+                                                            <div style={{ marginTop: -15 }}>
+                                                                <Rating
 
+                                                                    name="simple-controlled"
+                                                                    value={value}
+                                                                    onChange={(event, newValue) => {
+                                                                        setValue(newValue);
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className='feedback'>
+                                                            <textarea
+                                                                onChange={(event) => {
+                                                                    setFeedback(event.target.value);
+                                                                }} placeholder='What was the Expected feedback' />
+                                                        </div>
+                                                        <button onClick={handleClick} className="response-button">SUBMIT
+                                                        {loading && <FontAwesomeIcon style={{marginLeft: 20}} icon={faSpinner} spin /> }
+                                                        
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                            <div ref={messagesEndRef} />
+                                );
+                            })}
                         </div>
                         <div className="input-container">
                             <input
