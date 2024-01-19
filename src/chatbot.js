@@ -51,25 +51,43 @@ function ChatBot() {
 
     const handleChatOpen = () => {
         window.parent.postMessage({ width: '600px', height: '900px' }, '*');
-        setChatModalOpen(true)
+        setChatModalOpen(!isChatModalOpen)
         setInformativeTextOpen(false)
 
     }
-
+function isJSONArray(str) {
+  try {
+    const arr = JSON.parse(str);
+    return Array.isArray(arr);
+  } catch (e) {
+    return false;
+  }
+}
     const handleChatClose = () => {
         setChatModalOpen(false)
         window.parent.postMessage({ width: '100px', height: '80px' }, '*');
     }
 
     useEffect(() => {
-        let url = `wss://dev-chatbot.omnivoltaic.com/ws`
+        let email = localStorage.getItem('email')
+        let url = `wss://dev-chatbot.omnivoltaic.com/ws/${email}`
         const websocket = new WebSocket(url);
         setWs(websocket);
         websocket.onopen = () => console.log("Connected to the WebSocket server");
         websocket.onmessage = (event) => {
-            const botMessage = event.data;
+            let botMessage = event.data;
+    if (isJSONArray(botMessage)) {
+    botMessage = JSON.parse(botMessage);
+    console.log(botMessage, '---82---')
+    setMessages(botMessage)
+    setIsDivClicked(true);
+    }
+    else {
             setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
             setIsDivClicked(false);
+    }
+
+
         };
         websocket.onerror = (event) => console.error("WebSocket Error:", event);
         websocket.onclose = () => console.log("WebSocket connection closed");
@@ -99,12 +117,14 @@ function ChatBot() {
     };
 
     const handleSubmit = () => {
-
+        let email = localStorage.getItem('email')
         if (input.trim() === '') return;
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            ws.send(input.trim());
+            let data = {input: input.trim(), email: email}
+            let jsonResponse = JSON.stringify(data)
+            ws.send(jsonResponse);
             setInput('');
         }
     };
