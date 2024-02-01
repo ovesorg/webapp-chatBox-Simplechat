@@ -22,6 +22,8 @@ function ChatBot() {
     const [feedback, setFeedback] = useState('');
     const [isDivClicked, setIsDivClicked] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [parenWidth, setParentWidth] = useState(0)
+    const [parentHeight, setParentHeight] =useState(0)
     const handleClick = () => {
         setLoading(true)
         let a = messages.slice(-2)
@@ -34,8 +36,7 @@ function ChatBot() {
             user_rating: value
         }
         const jsonData = JSON.stringify(data)
-        console.log(jsonData, '----37----')
-        if(ws) {
+        if (ws) {
             ws.send(jsonData)
             setIsDivClicked(true)
             setLoading(false)
@@ -43,29 +44,68 @@ function ChatBot() {
             setFeedback('')
         }
     };
-
+    useEffect(() => {
+        window.addEventListener('message', (event) => {
+            if (event.data.width) {
+                if (event.data.width < 500) {
+                    resizeWindow()
+                }
+                setParentWidth(event.data.width)
+                setParentHeight(event.data.height)
+            }
+        });
+    }, []);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleChatOpen = () => {
-        window.parent.postMessage({ width: '600px', height: '900px' }, '*');
+        let width
+        let height
+        if(parenWidth> 500){
+            width = 400
+            height = 550
+        } else if(parenWidth< 500) {
+            width = (parenWidth - 10)
+            height = (parentHeight -10)
+        }
+        window.parent.postMessage({ width: `${width}px`, height: `${height}px`, sender: "Open" }, '*');
         setChatModalOpen(!isChatModalOpen)
+setTimeout(()=> {
+    if (parenWidth< 500) {
+        resizeWindow()
+    }
+}, 100)
         setInformativeTextOpen(false)
 
     }
-function isJSONArray(str) {
-  try {
-    const arr = JSON.parse(str);
-    return Array.isArray(arr);
-  } catch (e) {
-    return false;
-  }
-}
+    function isJSONArray(str) {
+        try {
+            const arr = JSON.parse(str);
+            return Array.isArray(arr);
+        } catch (e) {
+            return false;
+        }
+    }
     const handleChatClose = () => {
         setChatModalOpen(false)
-        window.parent.postMessage({ width: '100px', height: '80px' }, '*');
+        window.parent.postMessage({ width: '80px', height: '80px', sender: "Close" }, '*');
+    }
+
+    const resizeWindow = () => {
+        const chatbotContainer = document.querySelector('.chatbot-container');
+        const messagesContainer = document.querySelector('.messages-container');
+        if (chatbotContainer && messagesContainer) {
+
+            chatbotContainer.style.width = '95%';
+            chatbotContainer.style.height = '100vh';
+            chatbotContainer.style.bottom = '0';
+            chatbotContainer.style.right = '0';
+
+            messagesContainer.style.width = "100%"
+            messagesContainer.style.height = "80%"
+        }
     }
 
     useEffect(() => {
@@ -76,16 +116,15 @@ function isJSONArray(str) {
         websocket.onopen = () => console.log("Connected to the WebSocket server");
         websocket.onmessage = (event) => {
             let botMessage = event.data;
-    if (isJSONArray(botMessage)) {
-    botMessage = JSON.parse(botMessage);
-    console.log(botMessage, '---82---')
-    setMessages(botMessage)
-    setIsDivClicked(true);
-    }
-    else {
-            setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
-            setIsDivClicked(false);
-    }
+            if (isJSONArray(botMessage)) {
+                botMessage = JSON.parse(botMessage);
+                setMessages(botMessage)
+                setIsDivClicked(true);
+            }
+            else {
+                setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
+                setIsDivClicked(false);
+            }
 
 
         };
@@ -122,7 +161,7 @@ function isJSONArray(str) {
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            let data = {input: input.trim(), email: email}
+            let data = { input: input.trim(), email: email }
             let jsonResponse = JSON.stringify(data)
             ws.send(jsonResponse);
             setInput('');
@@ -146,7 +185,7 @@ function isJSONArray(str) {
         <>
             {isChatModalOpen ? (
                 <div className="chatbot-container">
-                    {isSignedIn ? (<> <div className="chatbot-header">Topic: {topic}
+                    {(<> <div className="chatbot-header">Topic: {topic}
                         <button className='minus-button' onClick={handleChatClose} >
                             <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="1em" viewBox="0 0 384 512"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" /></svg>
                         </button>
@@ -201,8 +240,8 @@ function isJSONArray(str) {
                                                                 }} placeholder='What was the Expected feedback' />
                                                         </div>
                                                         <button onClick={handleClick} className="response-button">SUBMIT
-                                                        {loading && <FontAwesomeIcon style={{marginLeft: 20}} icon={faSpinner} spin /> }
-                                                        
+                                                            {loading && <FontAwesomeIcon style={{ marginLeft: 20 }} icon={faSpinner} spin />}
+
                                                         </button>
                                                     </div>
                                                 </div>
@@ -210,8 +249,10 @@ function isJSONArray(str) {
                                             }
                                         </div>
                                     </div>
-                                );
+
+                                )
                             })}
+                            <div ref={messagesEndRef} />
                         </div>
                         <div className="input-container">
                             <input
@@ -223,7 +264,9 @@ function isJSONArray(str) {
                             <button onClick={handleSubmit} className='submit-button'>
                                 <svg className='message-button' fill='white' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376V479.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z" /></svg>
                             </button>
-                        </div></>) : <AuthentificationPage handleChatClose={handleChatClose} onLogin={handleLogin} />}
+
+                        </div></>)}
+                    {/* </div></>) : <AuthentificationPage handleChatClose={handleChatClose} onLogin={handleLogin} />} */}
                 </div>) : ''
             }
 
