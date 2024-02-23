@@ -179,7 +179,6 @@ setTimeout(()=> {
     }
     const styles = {
         marginTop: "5px"
-
     }
 
     return (
