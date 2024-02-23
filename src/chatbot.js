@@ -208,7 +208,7 @@ setTimeout(()=> {
                                                 <MessageBox
                                                     styles={styles}
                                                     position='right'
-                                                    title={message.type}
+                                                    title="you"
                                                     titleColor='grey'
                                                     type='text'
                                                     text={message.text}
