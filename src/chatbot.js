@@ -216,38 +216,7 @@ setTimeout(()=> {
                                                     date={new Date()}
                                                 />
                                             }
-                                            {isLastBotMessage && !isDivClicked &&
 
-                                                <div className='response-style'>
-                                                    <p>How did you find the Response</p>
-                                                    <div className='response-container'>
-                                                        <div className='rating'>
-                                                            <p>Rating</p>
-                                                            <div style={{ marginTop: -15 }}>
-                                                                <Rating
-
-                                                                    name="simple-controlled"
-                                                                    value={value}
-                                                                    onChange={(event, newValue) => {
-                                                                        setValue(newValue);
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                        <div className='feedback'>
-                                                            <textarea
-                                                                onChange={(event) => {
-                                                                    setFeedback(event.target.value);
-                                                                }} placeholder='What was the Expected feedback' />
-                                                        </div>
-                                                        <button onClick={handleClick} className="response-button">SUBMIT
-                                                            {loading && <FontAwesomeIcon style={{ marginLeft: 20 }} icon={faSpinner} spin />}
-
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                            }
                                         </div>
                                     </div>
 
