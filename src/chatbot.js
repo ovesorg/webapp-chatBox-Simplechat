@@ -59,7 +59,7 @@ function ChatBot() {
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
-    
+
 
     const handleChatOpen = () => {
         let width
@@ -162,7 +162,7 @@ setTimeout(()=> {
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            let data = { input: input.trim(), email: email }
+            let data = { input: input.trim(), email: email , page: window.location.href }
             let jsonResponse = JSON.stringify(data)
             ws.send(jsonResponse);
             setInput('');
