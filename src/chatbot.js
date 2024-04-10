@@ -162,9 +162,7 @@ setTimeout(()=> {
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            const page = window.location.href
-            console.log(page)
-            let data = { input: input.trim(), email: email , page, }
+            let data = { input: input.trim(), email: email, page: new URLSearchParams(window.location.search).get('page')}
             let jsonResponse = JSON.stringify(data)
             ws.send(jsonResponse);
             setInput('');
