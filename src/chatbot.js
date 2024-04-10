@@ -162,7 +162,9 @@ setTimeout(()=> {
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            let data = { input: input.trim(), email: email , page: window.location.href }
+            const page = window.location.href
+            console.log(page)
+            let data = { input: input.trim(), email: email , page, }
             let jsonResponse = JSON.stringify(data)
             ws.send(jsonResponse);
             setInput('');
