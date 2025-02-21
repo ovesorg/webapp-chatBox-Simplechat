@@ -13,5 +13,5 @@ FROM nginx:1.17.8-alpine AS package
 COPY --from=build /app/build /usr/share/nginx/html
 RUN rm -f /etc/nginx/config.d/default.conf
 COPY ../nginx/nginx.conf /etc/nginx/conf.d/
-EXPOSE 3111
+EXPOSE 4500
 CMD ["nginx","-g","daemon off;"]
