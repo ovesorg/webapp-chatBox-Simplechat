@@ -7,7 +7,7 @@ import AuthentificationPage from './pages/Authentication';
 import Rating from '@mui/material/Rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
-
+import { v4 as uuidv4 } from 'uuid';
 
 function ChatBot() {
     const topic = useState('OvesSmart chat')[0];
@@ -24,6 +24,15 @@ function ChatBot() {
     const [loading, setLoading] = useState(false)
     const [parenWidth, setParentWidth] = useState(0)
     const [parentHeight, setParentHeight] =useState(0)
+
+    useEffect(() => {
+        const storedUserId = localStorage.getItem('user_id');
+        if (!storedUserId) {
+            const uniqueUserId = uuidv4(); // Generate a unique user ID
+            localStorage.setItem('user_id', uniqueUserId); // Store the unique ID in localStorage
+        }
+    }, []);
+
     const handleClick = () => {
         setLoading(true)
         let a = messages.slice(-2)
@@ -110,24 +119,46 @@ setTimeout(()=> {
     }
 
     useEffect(() => {
-        let email = localStorage.getItem('email')
-        let url = `wss://dev-chatbot.omnivoltaic.com/ws/${email}`
+        let url = `ws://20.19.33.27:6500/chat`
         const websocket = new WebSocket(url);
         setWs(websocket);
-        websocket.onopen = () => console.log("Connected to the WebSocket server");
+        websocket.onopen = () => {
+            console.log("Connected to the WebSocket server");
+    
+            // Send the user_id to fetch the history when the connection is first made
+            const userId = localStorage.getItem('user_id');  // Replace with actual user_id
+            const data = { user_id: userId }; // Send user_id only to fetch the history
+            websocket.send(JSON.stringify(data));
+        };
+
         websocket.onmessage = (event) => {
-            let botMessage = event.data;
-            if (isJSONArray(botMessage)) {
-                botMessage = JSON.parse(botMessage);
-                setMessages(botMessage)
-                setIsDivClicked(true);
+            try {
+                // Parse the incoming message once
+                const data = JSON.parse(event.data);
+                
+                // Check if the response contains history
+                if (data.history) {
+                    // If it has history, set all messages from history
+                    setMessages(data.history.map(item => ({
+                        type: 'user',
+                        text: item.question
+                    })).flatMap((userMsg, index) => [
+                        userMsg,
+                        { 
+                            type: 'bot', 
+                            text: data.history[index].answer 
+                        }
+                    ]));
+                    setIsDivClicked(true);
+                } else if (data.response) {
+                    // If it's a single response to the current question
+                    setMessages(prevMessages => [...prevMessages, { type: 'bot', text: data.response }]);
+                    setIsDivClicked(false);
+                }
+            } catch (error) {
+                console.error("Error parsing WebSocket message:", error);
+                console.log("Raw message:", event.data);
             }
-            else {
-                setMessages((prevMessages) => [...prevMessages, { type: 'bot', text: botMessage }]);
-                setIsDivClicked(false);
-            }
-
-
         };
         websocket.onerror = (event) => console.error("WebSocket Error:", event);
         websocket.onclose = () => console.log("WebSocket connection closed");
@@ -157,12 +188,12 @@ setTimeout(()=> {
     };
 
     const handleSubmit = () => {
-        let email = localStorage.getItem('email')
+        const userId = localStorage.getItem('user_id');  // Replace with actual user_id
         if (input.trim() === '') return;
         const newMessage = { type: 'user', text: input.trim() };
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         if (ws) {
-            let data = { input: input.trim(), email: email }
+            const data = { user_id: userId, question: input.trim() };
             let jsonResponse = JSON.stringify(data)
             ws.send(jsonResponse);
             setInput('');
