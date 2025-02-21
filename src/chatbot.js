@@ -118,6 +118,7 @@ setTimeout(()=> {
         }
     }
 
+    
     useEffect(() => {
         let url = `ws://20.19.33.27:6500/chat`
         const websocket = new WebSocket(url);
