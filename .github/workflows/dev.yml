@@ -3,7 +3,7 @@ name: Deploy React App to Azure using Docker Hub
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build-and-deploy:
