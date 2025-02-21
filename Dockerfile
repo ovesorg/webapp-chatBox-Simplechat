@@ -1,35 +1,17 @@
-# Build Stage
-FROM node:18-slim AS builder
-
-# Set working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json for dependency installation
-COPY package*.json ./
-
-# Install all dependencies, including devDependencies
-RUN npm ci
-
-# Copy the rest of the application code
-COPY . .
-
-# Build the React application
+FROM node:18-alpine3.20 as build
+ENV PATH /app/node_modules/.bin:$PATH
+ENV WORKDIR /app
+WORKDIR $WORKDIR
+COPY ../package.json $WORKDIR
+COPY ../package-lock.json $WORKDIR
+COPY .. $WORKDIR
+RUN npm install -g npm
+RUN npm install --legacy-peer-deps
 RUN npm run build
 
-# Production Stage
-FROM node:18-slim
-
-# Set working directory
-WORKDIR /app
-
-# Copy the build output from the builder stage
-COPY --from=builder /app/build ./build
-
-# Install serve globally to serve the static files
-RUN npm install -g serve
-
-# Expose the port the app will run on
-EXPOSE 3000
-
-# Serve the application
-CMD ["serve", "build", "-s", "-l", "3000"]
+FROM nginx:1.17.8-alpine AS package
+COPY --from=build /app/build /usr/share/nginx/html
+RUN rm -f /etc/nginx/config.d/default.conf
+COPY ../nginx/nginx.conf /etc/nginx/conf.d/
+EXPOSE 3111
+CMD ["nginx","-g","daemon off;"]
