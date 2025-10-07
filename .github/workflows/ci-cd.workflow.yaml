@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY_NAME: ghcr.io
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/webapp-chat-box-simplechat-${{ github.ref_name }}
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/ovbot-fe-${{ github.ref_name }}
   REGISTRY_USERNAME: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
   BRANCH_NAME: ${{ github.ref_name }}
