@@ -7,7 +7,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Emoji from "../components/Emoji";
-import logo from "../imagess/ovesLogo.png"
+import logo from "../imagess/oves-logo.png"
 export default function AuthentificationPage(props) {
     const { instance, accounts } = useMsal();
     const activeAccount = instance.getActiveAccount();

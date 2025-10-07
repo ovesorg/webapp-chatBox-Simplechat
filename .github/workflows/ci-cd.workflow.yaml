@@ -179,11 +179,11 @@ jobs:
           email: ${{env.AUTHOR_EMAIL}}
           remote-url: ${{env.HELM_REMOTE_REPO}}
       - name: Check values.yaml content
-        run: cat influxdb-cronjob/values.yaml
+        run: cat chatbot-box/values.yaml
       - name: Update tag in values.yaml
         run: |
           echo ${{needs.semantic-release.outputs.git_tag}}
-          sed -i "/^[[:space:]]*tag:/c\  tag: ${{needs.semantic-release.outputs.git_tag}}-dev" influxdb-cronjob/values.yaml
+          sed -i "/^[[:space:]]*tag:/c\  tag: ${{needs.semantic-release.outputs.git_tag}}-${{env.BRANCH_NAME}}" chatbot-box/values.yaml
       - name: Check for changes
         run: |
           if ! git diff --quiet; then

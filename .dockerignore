@@ -57,7 +57,6 @@ docker-compose*
 .docker
 
 # CI/CD
-.github
 .gitlab-ci.yml
 .travis.yml
 .circleci
@@ -69,7 +68,6 @@ README.md
 README
 CHANGELOG.md
 CONTRIBUTING.md
-LICENSE
 LICENSE.md
 *.md
 docs
@@ -86,15 +84,12 @@ logs
 
 # OS files
 Thumbs.db
-.DS_Store
 desktop.ini
 
 # Misc
 .vercel
 .next
-.cache
 .parcel-cache
-.eslintcache
 .stylelintcache
 .prettiercache
 
@@ -112,6 +107,5 @@ desktop.ini
 
 # Development only files
 src/setupTests.js
-src/App.test.js
 src/reportWebVitals.js
 
