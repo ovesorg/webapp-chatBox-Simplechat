@@ -196,6 +196,7 @@ jobs:
           username: ${{env.AUTHOR_NAME}}
           email: ${{env.AUTHOR_EMAIL}}
           remote-url: ${{env.HELM_REMOTE_REPO}}
+          token: ${{env.REGISTRY_PASSWORD}}
       - name: Check values.yaml content
         if: steps.select_branch.outputs.should_update == 'true'
         run: cat ovbot-fe/values.yaml
