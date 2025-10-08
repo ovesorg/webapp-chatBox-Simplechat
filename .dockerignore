@@ -72,11 +72,10 @@ LICENSE.md
 *.md
 docs
 
-# Lock files (uncomment if you want to exclude them)
-# Note: You might want to keep package-lock.json for reproducible builds
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+# Lock files (keep for reproducible builds)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
 
 # Logs
 logs
@@ -106,6 +105,6 @@ desktop.ini
 # nginx
 
 # Development only files
-src/setupTests.js
-src/reportWebVitals.js
+# src/setupTests.js
+# src/reportWebVitals.js
 
