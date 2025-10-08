@@ -249,14 +249,14 @@ See [Changelog](./CHANGELOG.md) for recent documentation changes.
 
 ### Related Documentation
 
-- [React Documentation](https://reactjs.org/docs)
+- [React Documentation](https://react.dev/learn)
 - [Create React App Documentation](https://create-react-app.dev/)
 - [Azure MSAL Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview)
 - [WebSocket API Documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 
 ### Learning Resources
 
-- [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+- [React Tutorial](https://react.dev/learn)
 - [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 - [Docker Documentation](https://docs.docker.com/)
 - [Nginx Documentation](https://nginx.org/en/docs/)

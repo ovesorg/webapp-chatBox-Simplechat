@@ -374,7 +374,7 @@ Documentation is licensed under the same license as the project.
 
 - [Markdown Guide](https://www.markdownguide.org/)
 - [GitHub Docs](https://docs.github.com/)
-- [React Documentation](https://reactjs.org/docs)
+- [React Documentation](https://react.dev/learn)
 - [Docker Documentation](https://docs.docker.com/)
 
 ### Documentation Best Practices
