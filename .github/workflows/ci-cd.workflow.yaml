@@ -142,7 +142,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ needs.semantic-release.outputs.git_tag }}-dev
+          tag_name: ${{ needs.semantic-release.outputs.git_tag }}
           body: ${{ needs.semantic-release.outputs.changelog }}
           draft: false
           prerelease: false
@@ -188,7 +188,7 @@ jobs:
         with:
           repository: ovesorg/deployment-charts
           ref: ${{ steps.select_branch.outputs.branch }}
-          token: ${{env.REGISTRY_PASSWORD}}
+          token: ${{ secrets.GIT_TOKEN }}
       - name: Setup Git Config
         if: steps.select_branch.outputs.should_update == 'true'
         uses: jamie-codez/setup-git-user@v1
@@ -196,7 +196,7 @@ jobs:
           username: ${{env.AUTHOR_NAME}}
           email: ${{env.AUTHOR_EMAIL}}
           remote-url: ${{env.HELM_REMOTE_REPO}}
-          token: ${{env.REGISTRY_PASSWORD}}
+          token: ${{secrets.GIT_TOKEN}}
       - name: Check values.yaml content
         if: steps.select_branch.outputs.should_update == 'true'
         run: cat ovbot-fe/values.yaml

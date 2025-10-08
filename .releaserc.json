@@ -17,36 +17,10 @@
       "@semantic-release/github",
       {
         "assets": [
-          "package.json",
-          "README.md",
-          "CHANGELOG.md",
-          "SUPPORT.md",
-          "CODE_OF_CONDUCT.md",
-          "LICENSE",
-          "CONTRIBUTORS.md",
-          "CONTRIBUTING.md",
-          "GOVERNANCE.md",
-          "FUNDING.yml",
-          "manifest.json",
-          "public/manifest.json",
-          "DOCUMENTATION_SUMMARY.md",
-          "build"
+          "CHANGELOG.md"
         ],
         "releaseAssets": [
-          "package.json",
-          "README.md",
-          "CHANGELOG.md",
-          "SUPPORT.md",
-          "CODE_OF_CONDUCT.md",
-          "LICENSE",
-          "CONTRIBUTORS.md",
-          "CONTRIBUTING.md",
-          "GOVERNANCE.md",
-          "FUNDING.yml",
-          "manifest.json",
-          "public/manifest.json",
-          "DOCUMENTATION_SUMMARY.md",
-          "build"
+          "CHANGELOG.md"
         ],
         "token": "${env.GITHUB_TOKEN}",
         "releaseName": "${nextRelease.version}",
@@ -57,20 +31,7 @@
       "@semantic-release/git",
       {
         "assets": [
-          "package.json",
-          "README.md",
-          "CHANGELOG.md",
-          "SUPPORT.md",
-          "CODE_OF_CONDUCT.md",
-          "LICENSE",
-          "CONTRIBUTORS.md",
-          "CONTRIBUTING.md",
-          "GOVERNANCE.md",
-          "FUNDING.yml",
-          "manifest.json",
-          "public/manifest.json",
-          "DOCUMENTATION_SUMMARY.md",
-          "build"
+          "CHANGELOG.md"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
         "pushOptions": {
