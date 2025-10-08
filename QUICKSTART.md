@@ -133,7 +133,7 @@ NODE_OPTIONS=--max_old_space_size=4096 npm start
 
 - See [Deployment Guide](./docs/DEPLOYMENT.md) for production deployment
 - Review [Security Policy](./docs/SECURITY.md) for best practices
-- Check [Docker configuration](./Dockerfile) for customization
+- Check [Docker configuration](./docker/Dockerfile) for customization
 
 ## 🎯 Quick Commands
 
@@ -159,7 +159,7 @@ npm outdated                             # Check updates
 - **Documentation**: Check [docs/](./docs/) directory
 - **Website**: [omnivoltaic.com](https://omnivoltaic.com)
 - **Issues**: Search [GitHub Issues](https://github.com/ovesorg/webapp-chatBox-Simplechat/issues)
-- **Questions**: Open a [Discussion](https://github.com/ovesorg/webapp-chatBox-Simplechat/discussions)
+- **Questions**: Open an [Issue](https://github.com/ovesorg/webapp-chatBox-Simplechat/issues/new)
 
 ## 🎓 Learning Resources
 
