@@ -1,0 +1,110 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage
+.nyc_output
+*.test.js
+*.spec.js
+src/**/*.test.js
+src/**/*.spec.js
+src/**/*.test.jsx
+src/**/*.spec.jsx
+__tests__
+__mocks__
+
+# Production build
+build
+dist
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production.local
+*.env
+.env.*
+
+# Git
+.git
+.gitignore
+.gitattributes
+.github
+
+# IDE and Editor files
+.vscode
+.idea
+.DS_Store
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings
+.editorconfig
+
+# Docker files (when using this file)
+Dockerfile*
+docker-compose*
+.dockerignore
+.docker
+
+# CI/CD
+.gitlab-ci.yml
+.travis.yml
+.circleci
+azure-pipelines.yml
+Jenkinsfile
+
+# Documentation
+README.md
+README
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE.md
+*.md
+docs
+
+# Lock files (keep for reproducible builds)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Logs
+logs
+*.log
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Misc
+.vercel
+.next
+.parcel-cache
+.stylelintcache
+.prettiercache
+
+# Images and assets (if not needed in build)
+# Uncomment these if you don't need them in the Docker image
+# *.jpg
+# *.jpeg
+# *.png
+# *.gif
+# *.webp
+# OmnivoltaicCompany_files
+
+# Nginx config (if not needed based on your Dockerfile)
+# nginx
+
+# Development only files
+# src/setupTests.js
+# src/reportWebVitals.js
+
