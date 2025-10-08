@@ -188,7 +188,7 @@ jobs:
         with:
           repository: ovesorg/deployment-charts
           ref: ${{ steps.select_branch.outputs.branch }}
-          token: ${{env.REGISTRY_PASSWORD}}
+          token: ${{ secrets.GIT_TOKEN }}
       - name: Setup Git Config
         if: steps.select_branch.outputs.should_update == 'true'
         uses: jamie-codez/setup-git-user@v1
