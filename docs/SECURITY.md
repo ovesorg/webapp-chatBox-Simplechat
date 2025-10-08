@@ -384,9 +384,9 @@ Security features should not compromise accessibility:
 ### Security References
 
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [React Security Best Practices](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml)
+- [React: dangerouslySetInnerHTML](https://react.dev/reference/react-dom/components/common#dangerously-setting-inner-html)
 - [Node.js Security Best Practices](https://nodejs.org/en/docs/guides/security/)
-- [WebSocket Security](https://www.websocket.org/security.html)
+- [WebSocket Security (OWASP Cheat Sheet)](https://cheatsheetseries.owasp.org/cheatsheets/WebSocket_Security_Cheat_Sheet.html)
 
 ### Security Training
 

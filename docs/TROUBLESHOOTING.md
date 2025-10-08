@@ -803,7 +803,7 @@ When reporting issues, include:
 - Console errors and logs
 - Screenshots if applicable
 
-Use the [Bug Report Template](.github/ISSUE_TEMPLATE/bug_report.md)
+Use the [Bug Report Template](../.github/ISSUE_TEMPLATE/bug_report.md)
 
 ---
 

@@ -401,7 +401,7 @@ Deprecations are announced via:
 
 ## Questions?
 
-- **General Questions**: Open a [Discussion](https://github.com/ovesorg/webapp-chatBox-Simplechat/discussions)
+- **General Questions**: Open an [Issue](https://github.com/ovesorg/webapp-chatBox-Simplechat/issues/new)
 - **Feature Requests**: Use the [Feature Request Template](../.github/ISSUE_TEMPLATE/feature_request.md)
 - **Roadmap Feedback**: Email dev@oves.org
 

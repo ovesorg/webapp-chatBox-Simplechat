@@ -43,11 +43,11 @@ Have an idea for a new feature?
 
 ## 💬 Community Support
 
-### GitHub Discussions
+### GitHub Issues
 
-For general questions, ideas, and community discussions:
+For general questions, ideas, and discussions, or to report issues:
 
-[Join the Discussion](https://github.com/ovesorg/webapp-chatBox-Simplechat/discussions)
+[Open an Issue](https://github.com/ovesorg/webapp-chatBox-Simplechat/issues/new)
 
 ### GitHub Issues
 
