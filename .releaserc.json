@@ -1,0 +1,86 @@
+{
+  "branches": [
+    "main",
+    "dev",
+    "prod"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          "package.json",
+          "README.md",
+          "CHANGELOG.md",
+          "SUPPORT.md",
+          "CODE_OF_CONDUCT.md",
+          "LICENSE",
+          "CONTRIBUTORS.md",
+          "CONTRIBUTING.md",
+          "GOVERNANCE.md",
+          "FUNDING.yml",
+          "manifest.json",
+          "public/manifest.json",
+          "DOCUMENTATION_SUMMARY.md",
+          "build"
+        ],
+        "releaseAssets": [
+          "package.json",
+          "README.md",
+          "CHANGELOG.md",
+          "SUPPORT.md",
+          "CODE_OF_CONDUCT.md",
+          "LICENSE",
+          "CONTRIBUTORS.md",
+          "CONTRIBUTING.md",
+          "GOVERNANCE.md",
+          "FUNDING.yml",
+          "manifest.json",
+          "public/manifest.json",
+          "DOCUMENTATION_SUMMARY.md",
+          "build"
+        ],
+        "token": "${env.GITHUB_TOKEN}",
+        "releaseName": "${nextRelease.version}",
+        "body": "${nextRelease.notes}"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "package.json",
+          "README.md",
+          "CHANGELOG.md",
+          "SUPPORT.md",
+          "CODE_OF_CONDUCT.md",
+          "LICENSE",
+          "CONTRIBUTORS.md",
+          "CONTRIBUTING.md",
+          "GOVERNANCE.md",
+          "FUNDING.yml",
+          "manifest.json",
+          "public/manifest.json",
+          "DOCUMENTATION_SUMMARY.md",
+          "build"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        "pushOptions": {
+          "force": true,
+          "tags": true,
+          "tag_name": "v${nextRelease.version}",
+          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+          "ref": "main"
+        }
+      }
+    ]
+  ]
+}
