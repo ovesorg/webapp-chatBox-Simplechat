@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - dev
+      - prod
 
 env:
   REGISTRY_NAME: ghcr.io
@@ -166,31 +167,51 @@ jobs:
       - semantic-release
       - build-and-push
     steps:
+      - name: Select Branch
+        id: select_branch
+        shell: bash
+        run: |
+          BRANCH=""
+          SHOULD_UPDATE="false"
+          if [ "${GITHUB_REF_NAME}" = "dev" ]; then
+            BRANCH="${GITHUB_REF_NAME}"
+            SHOULD_UPDATE="true"
+          elif [ "${GITHUB_REF_NAME}" = "prod" ]; then
+            BRANCH="main"
+            SHOULD_UPDATE="true"
+          fi
+          echo "branch=${BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "should_update=${SHOULD_UPDATE}" >> "$GITHUB_OUTPUT"
       - name: Checkout Code
+        if: steps.select_branch.outputs.should_update == 'true'
         uses: actions/checkout@v4
         with:
           repository: ovesorg/deployment-charts
-          ref: ${{env.BRANCH_NAME}}
+          ref: ${{ steps.select_branch.outputs.branch }}
           token: ${{env.REGISTRY_PASSWORD}}
       - name: Setup Git Config
+        if: steps.select_branch.outputs.should_update == 'true'
         uses: jamie-codez/setup-git-user@v1
         with:
           username: ${{env.AUTHOR_NAME}}
           email: ${{env.AUTHOR_EMAIL}}
           remote-url: ${{env.HELM_REMOTE_REPO}}
       - name: Check values.yaml content
+        if: steps.select_branch.outputs.should_update == 'true'
         run: cat ovbot-fe/values.yaml
       - name: Update tag in values.yaml
+        if: steps.select_branch.outputs.should_update == 'true'
         run: |
           echo ${{needs.semantic-release.outputs.git_tag}}
-          sed -i "/^[[:space:]]*tag:/c\  tag: ${{needs.semantic-release.outputs.git_tag}}-${{env.BRANCH_NAME}}" ovbot-fe/values.yaml
+          sed -i "/^[[:space:]]*tag:/c\  tag: ${{needs.semantic-release.outputs.git_tag}}-${{ steps.select_branch.outputs.branch }}" ovbot-fe/values.yaml
       - name: Check for changes
+        if: steps.select_branch.outputs.should_update == 'true'
         run: |
           if ! git diff --quiet; then
             git add -A
             git commit -m "fix(ci-cd): :construction_worker: Updated image to ${{needs.build-and-push-image.outputs.git_tag}}"
             echo ${{github}}
-            git push origin ${{env.BRANCH_NAME}}
+            git push origin ${{ steps.select_branch.outputs.branch }}
           else
             echo "No changes to commit."
           fi
